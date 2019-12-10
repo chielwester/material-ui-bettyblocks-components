@@ -8,7 +8,7 @@
     const isEmpty = children.length === 0;
 		const { handleChange } = options;
 		const currentValue = B.env === 'prod' ? useText(options.defaultValue) : options.defaultValue.join(' ');
-		console.log(options);
+
 		return <div>
 			<TextField
 				name={options.formComponentName}
