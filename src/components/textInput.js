@@ -15,8 +15,10 @@
 				label={options.label}
 				variant={options.variant}
 				margin={options.margin}
-				value={currentValue}
-				{...(options.multiline ? {multiline: true}: {})}
+				type={options.inputtype}
+				defaultValue={currentValue}
+				placeholder={options.placeholder}
+				{...(options.multiline ? {multiline: true, rows: options.multilinerows, rowsMax: options.multilinemaxrows}: {})}
 				{...(options.fullwidth ? {fullWidth: true}: {})}
 				onChange={e => {
           if (handleChange) {

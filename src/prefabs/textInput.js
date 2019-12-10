@@ -12,6 +12,12 @@
 				  key: 'label',
 				  value: 'Material Textinput',
 				},
+				{
+				  type: 'TEXT',
+				  label: 'Placeholder',
+				  key: 'placeholder',
+				  value: '',
+				},
         {
           value: '',
           label: 'Name',
@@ -30,6 +36,47 @@
           key: 'multiline',
           type: 'TOGGLE',
         },
+				{
+				  type: 'NUMBER',
+				  label: 'Multiline rows',
+				  key: 'multilinerows',
+				  value: 4,
+				},
+				{
+				  type: 'NUMBER',
+				  label: 'Multiline max rows',
+				  key: 'multilinemaxrows',
+				  value: 4,
+				},
+				{
+				  type: 'CUSTOM',
+				  label: 'Input type',
+				  key: 'inputtype',
+				  value: 'text',
+				  configuration: {
+				    as: 'BUTTONGROUP',
+				    dataType: 'string',
+				    allowedInput: [
+				      {
+				        name: 'Text',
+				        value: 'text'
+				      },
+				      {
+				        name: 'Password',
+				        value: 'password'
+				      },
+				      {
+				        name: 'Number',
+				        value: 'number'
+				      },
+				      {
+				        name: 'Search',
+				        value: 'search'
+				      }
+
+				    ]
+				  }
+				},
 				{
 				  type: 'CUSTOM',
 				  label: 'Variant',
@@ -56,9 +103,9 @@
 				},
 				{
 				  type: 'VARIABLE',
-				  label: 'Variable',
+				  label: 'Default Value',
 				  key: 'defaultValue',
-				  value: ['Some text...'],
+				  value: [],
 				},
 				{
 				  type: 'CUSTOM',
