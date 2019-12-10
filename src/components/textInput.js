@@ -4,9 +4,10 @@
   allowedTypes: [],
   orientation: 'HORIZONTAL',
   jsx: (() => {
-		const {env} = B;
+		const {env, useText} = B;
     const isEmpty = children.length === 0;
 		const { handleChange } = options;
+		const currentValue = B.env === 'prod' ? useText(options.defaultValue) : options.defaultValue.join(' ');
 		console.log(options);
 		return <div>
 			<TextField
@@ -14,6 +15,7 @@
 				label={options.label}
 				variant={options.variant}
 				margin={options.margin}
+				value={currentValue}
 				{...(options.multiline ? {multiline: true}: {})}
 				{...(options.fullwidth ? {fullWidth: true}: {})}
 				onChange={e => {

@@ -55,6 +55,12 @@
 				  }
 				},
 				{
+				  type: 'VARIABLE',
+				  label: 'Variable',
+				  key: 'defaultValue',
+				  value: ['Some text...'],
+				},
+				{
 				  type: 'CUSTOM',
 				  label: 'Margin',
 				  key: 'margin',
