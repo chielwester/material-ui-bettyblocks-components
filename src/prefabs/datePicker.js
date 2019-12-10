@@ -10,13 +10,7 @@
 				  type: 'TEXT',
 				  label: 'Label',
 				  key: 'label',
-				  value: 'Material Textinput',
-				},
-				{
-				  type: 'TEXT',
-				  label: 'Placeholder',
-				  key: 'placeholder',
-				  value: '',
+				  value: 'Material Datepicker',
 				},
         {
           value: '',
@@ -32,72 +26,27 @@
         },
         {
           value: false,
-          label: 'Multiline',
-          key: 'multiline',
+          label: 'Disable Toolbar',
+          key: 'disableToolbar',
           type: 'TOGGLE',
         },
-				{
-				  type: 'NUMBER',
-				  label: 'Multiline rows',
-				  key: 'multilinerows',
-				  value: 4,
-				},
-				{
-				  type: 'NUMBER',
-				  label: 'Multiline max rows',
-				  key: 'multilinemaxrows',
-				  value: 4,
-				},
-				{
-				  type: 'CUSTOM',
-				  label: 'Input type',
-				  key: 'inputtype',
-				  value: 'text',
-				  configuration: {
-				    as: 'BUTTONGROUP',
-				    dataType: 'string',
-				    allowedInput: [
-				      {
-				        name: 'Text',
-				        value: 'text'
-				      },
-				      {
-				        name: 'Password',
-				        value: 'password'
-				      },
-				      {
-				        name: 'Number',
-				        value: 'number'
-				      },
-				      {
-				        name: 'Search',
-				        value: 'search'
-				      }
-
-				    ]
-				  }
-				},
 				{
 				  type: 'CUSTOM',
 				  label: 'Variant',
 				  key: 'variant',
-				  value: 'standard',
+				  value: 'normal',
 				  configuration: {
 				    as: 'BUTTONGROUP',
 				    dataType: 'string',
 				    allowedInput: [
 				      {
-				        name: 'Standard',
-				        value: 'standard'
+				        name: 'Normal',
+				        value: 'normal'
 				      },
 				      {
-				        name: 'Filled',
-				        value: 'filled'
+				        name: 'Inline',
+				        value: 'inline'
 				      },
-				      {
-				        name: 'Outlined',
-				        value: 'outlined'
-				      }
 				    ]
 				  }
 				},
@@ -128,6 +77,26 @@
 				        name: 'Normal',
 				        value: 'normal'
 				      }
+				    ]
+				  }
+				},
+				{
+				  type: 'CUSTOM',
+				  label: 'Date format',
+				  key: 'dateformat',
+				  value: 'MM/dd/yyyy',
+				  configuration: {
+				    as: 'BUTTONGROUP',
+				    dataType: 'string',
+				    allowedInput: [
+				      {
+				        name: 'MM/dd/yyyy',
+				        value: 'MM/dd/yyyy'
+				      },
+				      {
+				        name: 'dd/MM/yyyy',
+				        value: 'dd/MM/yyyy'
+				      },
 				    ]
 				  }
 				}
