@@ -6,19 +6,43 @@
   jsx: (() => {
 		const {env} = B;
     const isEmpty = children.length === 0;
-
+		const {handleValueChange, handleChange} = options;
     const isPristine = isEmpty && B.env === 'dev';
 		if(env === 'prod') {
 
 		}
+
+		const handleSelectChange = event => {
+
+			if(handleChange) {
+				handleChange(event);
+			}
+		}
+
 		return <div>
-			<FormControl className={classes.formControl}>
-			  <InputLabel id="demo-simple-select-label">Age</InputLabel>
+			<FormControl
+				className={classes.formControl}
+				variant={options.variant}
+				{...(options.fullwidth ? {fullWidth: true}: {})}
+				margin={options.margin}
+				>
+			  <InputLabel id="demo-simple-select-label">{options.label}</InputLabel>
 			  <Select
 			    labelId="demo-simple-select-label"
 			    id="demo-simple-select"
-			    value={10}
+			    defaultValue={options.defaultValue}
+
+					name={options.formComponentName}
+					onChange={handleSelectChange}
+
 			  >
+					{(() => {
+						if(options.blancooption) {
+							return (<MenuItem value="">
+		            <em>{options.blancolabel}</em>
+		          </MenuItem>)
+						}
+					})()}
 			    <MenuItem value={10}>Ten</MenuItem>
 			    <MenuItem value={20}>Twenty</MenuItem>
 			    <MenuItem value={30}>Thirty</MenuItem>
