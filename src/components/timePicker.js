@@ -7,10 +7,13 @@
 		const {env, useText} = B;
     const isEmpty = children.length === 0;
 		const { handleChange } = options;
-		const [selectedDate, setSelectedDate] = useState(new Date());
+		const [selectedDate, setSelectedDate] = useState(null);
 		const currentValue = B.env === 'prod' ? useText(options.defaultValue) : options.defaultValue.join(' ');
 	  const handleDateChange = date => {
 			setSelectedDate(date);
+			if(options.handleValueChange) {
+				options.handleValueChange({name: options.formComponentName, value: date.toLocaleTimeString()});
+			}
 	  };
 		return <div>
 		 <MuiPickersUtilsProvider utils={DateFnsUtils}>
