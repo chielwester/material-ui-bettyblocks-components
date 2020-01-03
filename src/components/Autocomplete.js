@@ -51,7 +51,7 @@
 
   	return (<div>
     <Autocomplete
-      id="asynchronous-demo"
+      id={'autocomplete-' + options.formComponentName}
       open={open}
       onOpen={() => {
         setOpen(true);
@@ -59,11 +59,13 @@
       onClose={() => {
         setOpen(false);
       }}
+			{...(options.multple ? {multiple: true}: {})}
+
 			onChange={(event, newValue) => {handleSelect(newValue)}}
       getOptionSelected={(option, value) => {
-				return option.name === value.name}
+				return option.id === value.id}
 			}
-      getOptionLabel={option => option.name}
+      getOptionLabel={option => Mustache.render(options.suggestiontemplate, {option: option})}
       options={suggestions}
       loading={loading}
 

@@ -12,6 +12,18 @@
 				  key: 'label',
 				  value: 'Material Autocomplete',
 				},
+				{
+					type: 'TEXT',
+					label: 'Suggestion template',
+					key: 'suggestiontemplate',
+					value: '{{option.name}}'
+				},
+        {
+          value: false,
+          label: 'Multiple?',
+          key: 'multple',
+          type: 'TOGGLE',
+        },
         {
           value: '',
           label: 'Data endpoint',
