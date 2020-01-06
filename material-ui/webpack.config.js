@@ -8,4 +8,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: 'umd',
   },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  },
 };
