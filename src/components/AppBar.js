@@ -1,25 +1,17 @@
 (() => ({
   name: 'AppBar',
-  type: 'ROW',
-  allowedTypes: ['BUTTON'],
+  type: 'APP_BAR',
+  allowedTypes: ['TOOLBAR', 'TABS'],
   orientation: 'HORIZONTAL',
-  jsx: <div className={classes.root}>
-		<AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-						{options.title}
-          </Typography>
-					{children}
-        </Toolbar>
-      </AppBar>
-	</div>,
+  jsx: (() => {
+    const { AppBar } = window.MaterialUI.Core;
+    const appBar = <AppBar position={options.position}>{children}</AppBar>;
+    const isDev = B.env === 'dev';
+    return isDev ? <div>{appBar}</div> : appBar;
+  })(),
   styles: () => () => ({
-    root: {},
-		title: {
-		    flexGrow: 1,
-		  },
+    root: {
+      flexGrow: 1,
+    },
   }),
 }))();
