@@ -1,7 +1,7 @@
 (() => ({
   name: 'Card',
   type: 'CARD',
-  allowedTypes: ['CHIP', 'DIVIDER', 'TEXT'],
+  allowedTypes: ['CHIP', 'DIVIDER', 'TEXT', 'IMAGE'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const {

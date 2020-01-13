@@ -18,6 +18,7 @@
     // 'TEXT',
     // 'BUTTON',
     'DIVIDER',
+    'PROGRESS',
     // 'IMAGE',
     // 'CONTAINER_COMPONENT',
     // 'FORM_COMPONENT',

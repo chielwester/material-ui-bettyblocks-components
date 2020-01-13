@@ -14,10 +14,10 @@
     // 'DATATABLE',
     'DIVIDER',
     'FORM',
-    // 'IMAGE',
+    'IMAGE',
     // 'PARTIAL',
     // 'PANEL',
-    // 'PROGRESS',
+    'PROGRESS',
     'SNACKBAR',
     'STEPPER',
     'TABS',
@@ -34,7 +34,10 @@
     const isPristine = !children.length && isDev;
     const container = (
       <Container
-        className={[isPristine ? classes.pristine : ''].join(' ')}
+        className={[
+          isPristine ? classes.pristine : '',
+          isDev ? classes.dev : '',
+        ].join(' ')}
         disableGutters={disableGutters}
         fixed={fixed}
       >
@@ -45,6 +48,9 @@
   })(),
   styles: () => () => {
     return {
+      dev: {
+        paddingBottom: '10px',
+      },
       pristine: {
         borderWidth: '0.0625rem',
         borderColor: '#AFB5C8',
