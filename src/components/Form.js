@@ -3,7 +3,7 @@
   category: 'FORM',
   type: 'FORM',
   allowedTypes: [
-    // 'DATE_PICKER',
+    'DATE_PICKER',
     // 'DATE_TIME_PICKER',
     // 'TIME_PICKER',
     // 'DROPDOWN',
