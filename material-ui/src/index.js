@@ -5,6 +5,7 @@ import * as Lab from '@material-ui/lab';
 import * as Pickers from '@material-ui/pickers';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import { ExpandMore } from '@material-ui/icons';
 
 window.MaterialUI = {
   Core,
@@ -12,4 +13,5 @@ window.MaterialUI = {
 	DateFnsUtils,
 	Pickers,
   Styles: { ThemeProvider, createMuiTheme },
+  Icons: { ExpandMore },
 };
