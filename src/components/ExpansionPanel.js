@@ -1,7 +1,7 @@
 (() => ({
   name: 'ExpansionPanel',
   type: 'ACCORDION_ITEM',
-  allowedTypes: ['TEXT', 'BUTTON'],
+  allowedTypes: ['CHIP', 'DIVIDER', 'TEXT', 'IMAGE', 'TOOLTIP'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const {
@@ -16,15 +16,13 @@
     const isDev = B.env === 'dev';
     const panel = (
       <ExpansionPanel
-        expanded={expanded === index}
+        expanded={isDev || expanded === index}
         onChange={handleChange(index)}
       >
         <ExpansionPanelSummary expandIcon={<ExpandMore />}>
           <Typography>{summary}</Typography>
         </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>{details}</Typography>
-        </ExpansionPanelDetails>
+        <ExpansionPanelDetails>{children}</ExpansionPanelDetails>
       </ExpansionPanel>
     );
     return isDev ? <div>{panel}</div> : panel;
