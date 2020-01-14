@@ -12,6 +12,7 @@
       disabled,
       color,
       text,
+      row,
       // error,
       helperText,
       selectOptions,
@@ -28,6 +29,7 @@
     } = window.MaterialUI.Core;
     const radiogroup = (
       <RadioGroup
+        row={row}
         value={value}
         name={name}
         onChange={event => setValue(event.target.value)}
@@ -52,7 +54,11 @@
       </FormControl>
     );
 
-    return isDev ? <div className={classes.radioButtonGroup}>{formControl}</div> : formControl;
+    return isDev ? (
+      <div className={classes.radioButtonGroup}>{formControl}</div>
+    ) : (
+      formControl
+    );
   })(),
   styles: B => t => {
     return {
@@ -61,6 +67,5 @@
         margin: '8px',
       },
     };
-
   },
 }))();
