@@ -32,7 +32,12 @@
         </TableSortLabel>
       </TableCell>
     ) : (
-      <TableCell align={align} className={!children.length ? classes.empty : null}>
+      <TableCell
+        align={align}
+        className={[classes.cell, !children.length ? classes.empty : ''].join(
+          ' ',
+        )}
+      >
         {GetOneProvider ? (
           <GetOneProvider value={row}>{children}</GetOneProvider>
         ) : (
@@ -43,6 +48,9 @@
     return isDev ? <span>{cell}</span> : cell;
   })(),
   styles: () => () => ({
+    cell: {
+      whiteSpace: 'pre-wrap',
+    },
     empty: {
       border: '1px dotted black',
     },
