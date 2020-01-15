@@ -132,9 +132,11 @@
                     <>
                       {searching ? (
                         <TextField
-                          onChange={event =>
-                            setSearchParam(event.target.value) && refetch()
-                          }
+                          onChange={event => {
+                            setSearchParam(event.target.value);
+                            setPage(0);
+                            refetch({ page: 0 });
+                          }}
                           placeholder={
                             searchProp
                               ? searchProp.name.charAt(0).toUpperCase() +
