@@ -7,23 +7,11 @@
       name: 'TableColumn',
       options: [
         {
-          value: '',
-          label: 'Property',
-          key: 'property',
-          type: 'PROPERTY',
-        },
-        {
           type: 'TEXT',
           label: 'Label',
           key: 'label',
           value: 'Column',
         },
-        // {
-        //   value: 'Body1',
-        //   label: 'Header Type',
-        //   key: 'type',
-        //   type: 'FONT',
-        // },
         {
           type: 'CUSTOM',
           label: 'Column Alignment',
@@ -41,8 +29,23 @@
           },
         },
       ],
-      descendants: [],
+      descendants: [
+        {
+          name: 'Typography',
+          descendants: [],
+          options: [
+            {
+              type: 'VARIABLE',
+              label: 'Text',
+              key: 'text',
+              value: ['text'],
+              configuration: {
+                as: 'MULTILINE',
+              },
+            },
+          ],
+        },
+      ],
     },
   ],
 }))();
-

@@ -15,10 +15,10 @@
         display={display}
         color={color}
       >
-        {text}
+        <B.Text value={text} />
       </Typography>
     );
-    return isDev ? <div>{typography}</div> : typography;
+    return isDev ? <span>{typography}</span> : typography;
   })(),
   styles: () => () => ({}),
 }))();

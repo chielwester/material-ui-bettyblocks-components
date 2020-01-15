@@ -1,13 +1,13 @@
 (() => ({
   name: 'TableColumn',
   type: 'TABLE_COLUMN',
-  allowedTypes: ['TEXT', 'BUTTON'],
+  allowedTypes: ['TEXT', 'BUTTON', 'DIVIDER', 'CHIP'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const { TableCell, TableSortLabel } = window.MaterialUI.Core;
     const { row, order, headerOnly, orderBy, onRequestSort } = parent || {};
     const { env, GetOneProvider, getProperty, Link } = B;
-    const isDev = B.env === 'dev';
+    const isDev = env === 'dev';
     const { label, align } = options;
     const propertyName = options.property
       ? getProperty(options.property) && getProperty(options.property).name
@@ -32,12 +32,19 @@
         </TableSortLabel>
       </TableCell>
     ) : (
-      <TableCell align={align}>
-        {propertyName && row[propertyName]}
-        {/* <GetOneProvider value={value}>{children}</GetOneProvider> */}
+      <TableCell align={align} className={!children.length ? classes.empty : null}>
+        {GetOneProvider ? (
+          <GetOneProvider value={row}>{children}</GetOneProvider>
+        ) : (
+          children
+        )}
       </TableCell>
     );
     return isDev ? <span>{cell}</span> : cell;
   })(),
-  styles: () => () => ({}),
+  styles: () => () => ({
+    empty: {
+      border: '1px dotted black',
+    },
+  }),
 }))();

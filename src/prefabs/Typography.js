@@ -11,6 +11,9 @@
           label: 'Text',
           key: 'text',
           value: ['text'],
+          configuration: {
+            as: 'MULTILINE',
+          },
         },
         {
           type: 'TOGGLE',
