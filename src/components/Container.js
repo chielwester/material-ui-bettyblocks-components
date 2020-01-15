@@ -21,6 +21,7 @@
     'PROGRESS',
     'SNACKBAR',
     'STEPPER',
+    'TABLE',
     'TABS',
     'TEXT',
     // 'BODY_COMPONENT',
