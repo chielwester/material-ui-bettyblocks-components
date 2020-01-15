@@ -7,7 +7,7 @@
   jsx: (() => {
     const {
       label,
-      name,
+      formComponentName,
       required,
       disabled,
       multiline,
@@ -25,18 +25,23 @@
     const [value, setValue] = useState(text && text.length ? text : undefined);
 
     const { TextField } = window.MaterialUI.Core;
-
+		const handleChange = (event) => {
+			setValue(event.target.value);
+			if(options.handleValueChange) {
+				options.handleValueChange({name: formComponentName, value: event.target.value})
+			}
+		}
     const textField = (
       <TextField
-        className={classes.textField}
+				name={formComponentName}
         value={value}
         size={size}
         variant={variant}
         placeholder={placeholder}
         fullWidth={fullWidth}
         type={type}
-        onChange={event => setValue(event.target.value)}
-        inputProps={{ name }}
+        onChange={handleChange}
+        inputProps={{ formComponentName }}
         required={required}
         disabled={disabled}
         multiline={multiline}
@@ -48,7 +53,7 @@
     );
 
     return isDev ? (
-      <div className={classes.textField}>{textField}</div>
+      <div >{textField}</div>
     ) : (
       textField
     );
