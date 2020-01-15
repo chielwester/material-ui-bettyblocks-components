@@ -40,7 +40,7 @@
 
     const control = (
       <FormControl
-        className={classes.checkbox}
+
         margin={margin}
         required={required}
         error={error}
@@ -49,7 +49,7 @@
         <FormHelperText>{helperText}</FormHelperText>
       </FormControl>
     );
-    return isDev ? <div className={classes.checkbox}>{control}</div> : control;
+    return isDev ? <div>{control}</div> : control;
   })(),
   styles: B => t => {
     return {
