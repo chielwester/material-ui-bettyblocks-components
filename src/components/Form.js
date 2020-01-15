@@ -116,7 +116,7 @@
 
       if ('formComponentName' in totalOptions) {
         totalOptions.handleChange = handleChange;
-				totalOptions.handleValueChange = handleValueChange;
+        totalOptions.handleValueChange = handleValueChange;
         totalOptions.showValid = showValid;
         initState[totalOptions.formComponentName] =
           totalOptions.formComponentValue;
