@@ -53,7 +53,7 @@
 				className={classes.checkbox}
       >
         <FormControlLabel control={checkbox} label={label} />
-        <FormHelperText>{helperText}</FormHelperText>
+        {helperText != '' ? <FormHelperText>{helperText}</FormHelperText> : ''}
       </FormControl>
     );
     return isDev ? <div>{control}</div> : control;
