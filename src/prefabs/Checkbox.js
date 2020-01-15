@@ -9,7 +9,7 @@
         {
           value: '',
           label: 'Name',
-          key: 'name',
+          key: 'formComponentName',
           type: 'TEXT',
         },
         {
