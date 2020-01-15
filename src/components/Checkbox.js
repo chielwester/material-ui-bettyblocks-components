@@ -7,7 +7,7 @@
   jsx: (() => {
     const {
       label,
-      name,
+      formComponentName,
       color,
       disabled,
       checked,
@@ -27,23 +27,30 @@
       FormHelperText,
     } = window.MaterialUI.Core;
 
+		const handleChange = (event) => {
+			setValue(event.target.checked);
+			if(options.handleValueChange) {
+				options.handleValueChange({name: formComponentName, value: event.target.checked})
+			}
+		}
+
     const checkbox = (
       <Checkbox
         checked={value}
         color={color}
         size={size}
-        onChange={event => setValue(event.target.checked)}
-        inputProps={{ name }}
+        onChange={handleChange}
+				name={formComponentName}
         disabled={disabled}
       />
     );
 
     const control = (
       <FormControl
-
         margin={margin}
         required={required}
         error={error}
+				className={classes.checkbox}
       >
         <FormControlLabel control={checkbox} label={label} />
         <FormHelperText>{helperText}</FormHelperText>
@@ -54,8 +61,7 @@
   styles: B => t => {
     return {
       checkbox: {
-        width: '200px',
-        margin: '8px',
+				display: 'block'
       },
     };
   },
