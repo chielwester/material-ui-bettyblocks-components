@@ -26,7 +26,7 @@
     const isDev = B.env === 'dev';
     const { GetAll, getProperty } = B;
     const [take, setTake] = useState(10);
-    const [records, setRecords] = useState([]);
+    const [records, setRecords] = useState(isDev ? [{}] : []);
     const [totalCount, setTotalCount] = useState(0);
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('');
