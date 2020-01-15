@@ -34,6 +34,12 @@
           },
         },
         {
+          type: 'TOGGLE',
+          label: 'Row',
+          key: 'row',
+          value: true,
+        },
+        {
           label: 'Color',
           key: 'color',
           value: 'default',
