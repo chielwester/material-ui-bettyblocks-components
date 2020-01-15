@@ -9,13 +9,18 @@
       Table,
       TableHead,
       TableBody,
+      TableFooter,
       TableRow,
       TableCell,
       TablePagination,
+      Backdrop,
+      CircularProgress,
     } = window.MaterialUI.Core;
     const isDev = B.env === 'dev';
     const { GetAll } = B;
     const [take, setTake] = useState(10);
+    const [records, setRecords] = useState([]);
+    const [totalCount, setTotalCount] = useState(0);
     // const queryParams = new URLSearchParams(querystring);
     const [page, setPage] = useState(0);
     // const {
@@ -111,11 +116,21 @@
           take={take}
         >
           {({ loading, error, data, refetch }) => {
+            if (data) {
+              if (data.totalCount) setTotalCount(data.totalCount);
+              if (data.results && data.results.length) setRecords(data.results);
+            }
             return (
               <>
                 <TableContainer
-                  className={!children.length && isDev ? classes.pristine : ''}
+                  className={[
+                    classes.container,
+                    !children.length && isDev ? classes.pristine : '',
+                  ].join(' ')}
                 >
+                  <Backdrop className={classes.backdrop} open={loading}>
+                    <CircularProgress color="inherit" />
+                  </Backdrop>
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                       <TableRow>
@@ -123,38 +138,40 @@
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {error || loading ? (
+                      {error ? (
                         <TableRow key={0}>
-                          <TableCell>
-                            {error ? 'An error occurred :-(' : 'Loading...'}
-                          </TableCell>
+                          <TableCell>An error occurred :-(</TableCell>
                         </TableRow>
                       ) : (
-                        data.results.map(row => (
+                        records.map(row => (
                           <TableRow key={row.id}>
                             <B.Children row={row}>{children}</B.Children>
                           </TableRow>
                         ))
                       )}
                     </TableBody>
+                    <TableFooter>
+                      {!error ? (
+                        <TableRow>
+                          <TablePagination
+                            rowsPerPageOptions={[5, 10, 15, 20, 25, 50]}
+                            count={totalCount}
+                            rowsPerPage={take}
+                            page={page}
+                            onChangePage={(_, page) =>
+                              setPage(page) && refetch && refetch({ page })
+                            }
+                            onChangeRowsPerPage={event =>
+                              setTake(event.target.value) &&
+                              refetch &&
+                              refetch({ take: event.target.value })
+                            }
+                          />
+                        </TableRow>
+                      ) : null}
+                    </TableFooter>
                   </Table>
                 </TableContainer>
-                {!error && !loading ? (
-                  <TablePagination
-                    rowsPerPageOptions={[5, 10, 15, 20, 25, 50]}
-                    count={data.totalCount}
-                    rowsPerPage={take}
-                    page={page}
-                    onChangePage={(_, page) =>
-                      setPage(page) && refetch && refetch({ page })
-                    }
-                    onChangeRowsPerPage={event =>
-                      setTake(event.target.value) &&
-                      refetch &&
-                      refetch({ take: event.target.value })
-                    }
-                  />
-                ) : null}
               </>
             );
           }}
@@ -163,6 +180,13 @@
     );
   })(),
   styles: () => () => ({
+    container: {
+      position: 'relative',
+    },
+    backdrop: {
+      zIndex: 1,
+      position: 'absolute',
+    },
     pristine: {
       minHeight: '100px',
     },
