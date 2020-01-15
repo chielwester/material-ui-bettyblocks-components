@@ -4,36 +4,47 @@
   type: 'FORM',
   allowedTypes: [
     'DATE_PICKER',
-    // 'DATE_TIME_PICKER',
-    // 'TIME_PICKER',
-    // 'DROPDOWN',
-    // 'MULTISELECT',
+    'DATE_TIME_PICKER',
+    'TIME_PICKER',
+    'DROPDOWN',
+    'MULTISELECT',
     'CHECKBOX',
     'TEXT_INPUT',
-    // 'RADIO_BUTTON_GROUP',
-    // 'FILE_INPUT',
-    // 'IMAGE_INPUT',
-    // 'SUBMIT_BUTTON',
-    // 'ALERT',
-    // 'TEXT',
-    // 'BUTTON',
+    'RADIO_BUTTON_GROUP',
+    'FILE_INPUT',
+    'IMAGE_INPUT',
+    'SUBMIT_BUTTON',
+    'ALERT',
+    'TEXT',
+    'BUTTON',
     'DIVIDER',
     'PROGRESS',
-    // 'IMAGE',
-    // 'CONTAINER_COMPONENT',
-    // 'FORM_COMPONENT',
-    // 'CONTENT_COMPONENT',
+    'IMAGE',
+    'CONTAINER_COMPONENT',
+    'FORM_COMPONENT',
+    'CONTENT_COMPONENT',
   ],
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const isDev = B.env === 'dev';
-    const [state, setState] = useState({});
+		const {__SECRET_CONTEXT_DO_NOT_USE} = B;
+    const [state, setState] = isDev ? useState({}) : useContext(__SECRET_CONTEXT_DO_NOT_USE);
     const [status, setStatus] = useState(null);
     const [showValid, setShowValid] = useState(null);
     const showPlaceholder = children.length === 0;
     const isPristine = showPlaceholder && B.env === 'dev';
     const ref = React.createRef();
     const initState = {};
+    const handleValueChange = ({ name, value }) => {
+      const newState = {
+        ...initState,
+        ...state.formState,
+
+        [name]: value,
+      };
+      setStatus(null);
+      setState(prev => ({...prev, formState: newState}));
+    };
     const handleChange = ({ target: { name, value } }) => {
       const newState = {
         ...initState,
@@ -41,14 +52,14 @@
         [name]: value,
       };
       setStatus(null);
-      setState(newState);
+			setState(prev => ({...prev, formState: newState}));
     };
     const postData = () => {
       const redirect = B.getEndpoint(options.redirect) || '';
       const formData = new FormData();
       const newState = {
         ...initState,
-        ...state,
+        ...state.formState,
       };
       Object.keys(newState).forEach(key => {
         formData.append(key, newState[key]);
@@ -102,8 +113,10 @@
     };
     const childrenWithProps = React.Children.map(children, child => {
       const totalOptions = child.props.options || {};
+
       if ('formComponentName' in totalOptions) {
         totalOptions.handleChange = handleChange;
+				totalOptions.handleValueChange = handleValueChange;
         totalOptions.showValid = showValid;
         initState[totalOptions.formComponentName] =
           totalOptions.formComponentValue;
