@@ -15,6 +15,7 @@
     'DIVIDER',
     'FORM',
     'IMAGE',
+    'LIST',
     'TOOLTIP',
     // 'PARTIAL',
     // 'PANEL',
