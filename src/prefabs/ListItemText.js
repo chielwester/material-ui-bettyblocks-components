@@ -20,6 +20,26 @@
         },
         {
           type: 'TOGGLE',
+          label: 'Button',
+          key: 'button',
+          value: false,
+        },
+        {
+          value: '',
+          label: 'Page',
+          key: 'linkTo',
+          type: 'ENDPOINT',
+          configuration: {
+            // condition: {
+            //   type: 'SHOW',
+            //   option: 'button',
+            //   comparator: 'EQ',
+            //   value: true,
+            // },
+          },
+        },
+        {
+          type: 'TOGGLE',
           label: 'Disabled',
           key: 'disabled',
           value: false,

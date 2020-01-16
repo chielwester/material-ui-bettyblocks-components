@@ -13,6 +13,7 @@
     // 'DATALIST',
     // 'DATATABLE',
     'DIVIDER',
+    'DRAWER',
     'FORM',
     'IMAGE',
     'LIST',

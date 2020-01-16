@@ -13,15 +13,19 @@
       selected,
       primaryText,
       secondaryText,
+      button,
     } = options;
     const isDev = B.env === 'dev';
     const listItem = (
       <ListItem
+        button={button}
         alignItems={alignItems}
         disabled={disabled}
         disableGutters={disableGutters}
         divider={divider}
         selected={selected}
+        component={button ? B.Link : 'li'}
+        endpointId={options.linkTo}
       >
         <ListItemText
           primary={primaryText}
