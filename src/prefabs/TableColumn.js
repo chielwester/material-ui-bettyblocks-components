@@ -28,6 +28,12 @@
             ],
           },
         },
+        {
+          value: '',
+          label: 'Order by',
+          key: 'property',
+          type: 'PROPERTY',
+        },
       ],
       descendants: [
         {

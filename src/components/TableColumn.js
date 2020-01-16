@@ -26,7 +26,7 @@
         <TableSortLabel
           active={orderBy === propertyName}
           direction={orderBy === propertyName ? order : 'asc'}
-          onClick={createSortHandler(propertyName)}
+          onClick={propertyName && createSortHandler(propertyName)}
         >
           {label}
         </TableSortLabel>
