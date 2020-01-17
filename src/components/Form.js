@@ -3,6 +3,7 @@
   category: 'FORM',
   type: 'FORM',
   allowedTypes: [
+    'AUTO_COMPLETE',
     'DATE_PICKER',
     'DATE_TIME_PICKER',
     'TIME_PICKER',
