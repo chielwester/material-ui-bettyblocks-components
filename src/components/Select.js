@@ -26,7 +26,6 @@
     const selectField = (
       <TextField
         select
-        className={classes.selectField}
         value={value}
         size={size}
         variant={variant}
@@ -54,12 +53,5 @@
       selectField
     );
   })(),
-  styles: () => () => {
-    return {
-      selectField: {
-        width: '200px',
-        margin: '8px'
-      },
-    };
-  },
+  styles: () => () => {},
 }))();
