@@ -3,6 +3,7 @@
   type: 'DRAWER',
   allowedTypes: [
     'ACCORDION',
+    'BOX',
     'BUTTON',
     'APP_BAR',
     'CARD',
@@ -17,6 +18,7 @@
     'TOOLTIP',
     // 'PARTIAL',
     // 'PANEL',
+    'PAPER',
     'PROGRESS',
     'STEPPER',
     'TABLE',

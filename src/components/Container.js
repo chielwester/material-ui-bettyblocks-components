@@ -4,6 +4,7 @@
   allowedTypes: [
     'ACCORDION',
     'ALERT',
+    'BOX',
     'BREADCRUMBS',
     'BUTTON',
     'APP_BAR',

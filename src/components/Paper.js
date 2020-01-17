@@ -5,6 +5,7 @@
     'ACCORDION',
     'ALERT',
     'BREADCRUMBS',
+    'BOX',
     'BUTTON',
     'APP_BAR',
     'CARD',
