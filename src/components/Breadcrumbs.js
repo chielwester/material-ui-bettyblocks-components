@@ -1,6 +1,6 @@
 (() => ({
   name: 'Breadcrumbs',
-  type: 'BREADCRUMB',
+  type: 'BREADCRUMBS',
   allowedTypes: ['LINK'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
