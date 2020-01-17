@@ -34,7 +34,7 @@
   ],
   orientation: 'VERTICAL',
   jsx: (() => {
-    const { Container } = window.MaterialUI.Core;
+    const { Container, CssBaseline } = window.MaterialUI.Core;
     const { disableGutters, fixed, maxWidth } = options;
     const isDev = B.env === 'dev';
     const isPristine = !children.length && isDev;
@@ -48,6 +48,7 @@
         fixed={fixed}
         maxWidth={maxWidth === 'none' ? false : maxWidth}
       >
+        <CssBaseline />
         {children}
       </Container>
     );
