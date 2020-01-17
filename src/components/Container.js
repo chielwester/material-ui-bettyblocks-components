@@ -20,6 +20,7 @@
     'TOOLTIP',
     // 'PARTIAL',
     // 'PANEL',
+    'PAPER',
     'PROGRESS',
     'SNACKBAR',
     'STEPPER',
