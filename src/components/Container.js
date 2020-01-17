@@ -33,7 +33,7 @@
   orientation: 'VERTICAL',
   jsx: (() => {
     const { Container } = window.MaterialUI.Core;
-    const { disableGutters, fixed } = options;
+    const { disableGutters, fixed, maxWidth } = options;
     const isDev = B.env === 'dev';
     const isPristine = !children.length && isDev;
     const container = (
@@ -44,6 +44,7 @@
         ].join(' ')}
         disableGutters={disableGutters}
         fixed={fixed}
+        maxWidth={maxWidth === 'none' ? false : maxWidth}
       >
         {children}
       </Container>
