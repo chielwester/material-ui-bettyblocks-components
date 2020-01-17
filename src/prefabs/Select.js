@@ -7,12 +7,6 @@
       name: 'SelectInput',
       options: [
         {
-          value: 'text',
-          label: 'Type',
-          key: 'type',
-          type: 'TEXT',
-        },
-        {
           value: '',
           label: 'Name',
           key: 'name',

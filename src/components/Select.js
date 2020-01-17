@@ -31,7 +31,6 @@
         size={size}
         variant={variant}
         fullWidth={fullWidth}
-        type={type}
         onChange={event => setValue(event.target.value)}
         inputProps={{ name }}
         required={required}
