@@ -4,12 +4,20 @@
   allowedTypes: [],
   orientation: 'VERTICAL',
   jsx: (() => {
+    const { Icons } = window.MaterialUI;
     const { Button } = window.MaterialUI.Core;
-    const { linkType, color, linkToExternal, variant } = options;
+    const { linkType, color, linkToExternal, variant, startIcon } = options;
     const isDev = B.env === 'dev';
     const button =
       linkType === 'External' ? (
-        <Button variant={variant} color={color} href={linkToExternal}>
+        <Button
+          variant={variant}
+          color={color}
+          href={linkToExternal}
+          startIcon={
+            startIcon !== 'None' ? React.createElement(Icons[startIcon]) : null
+          }
+        >
           {options.buttonText}
         </Button>
       ) : (
@@ -18,6 +26,9 @@
           color={color}
           component={B.Link}
           endpointId={options.linkTo}
+          startIcon={
+            startIcon !== 'None' ? React.createElement(Icons[startIcon]) : null
+          }
         >
           {options.buttonText}
         </Button>

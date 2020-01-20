@@ -13,6 +13,46 @@
           value: ['Button'],
         },
         {
+          label: 'StartIcon',
+          key: 'startIcon',
+          value: 'None',
+          type: 'CUSTOM',
+          configuration: {
+            as: 'DROPDOWN',
+            dataType: 'string',
+            allowedInput: [
+              {
+                name: '',
+                value: 'None',
+              },
+              {
+                name: 'ExpandMore',
+                value: 'ExpandMore',
+              },
+              {
+                name: 'FilterList',
+                value: 'FilterList',
+              },
+              {
+                name: 'Search',
+                value: 'Search',
+              },
+              {
+                name: 'FileCopy',
+                value: 'FileCopy',
+              },
+              {
+                name: 'GetApp',
+                value: 'GetApp',
+              },
+              {
+                name: 'Email',
+                value: 'Email',
+              },
+            ],
+          },
+        },
+        {
           type: 'CUSTOM',
           label: 'variant',
           key: 'variant',
