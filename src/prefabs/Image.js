@@ -13,6 +13,12 @@
           type: 'TEXT',
         },
         {
+          value: '100%',
+          label: 'Image size',
+          key: 'imgSize',
+          type: 'TEXT',
+        },
+        {
           value: '',
           label: 'Image Alternative Text',
           key: 'imgAlt',
