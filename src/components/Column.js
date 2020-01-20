@@ -27,6 +27,7 @@
     'TABS',
     'TEXT',
     'CHECKBOX',
+    'SUBMIT_BUTTON',
   ],
   orientation: 'VERTICAL',
   jsx: (
