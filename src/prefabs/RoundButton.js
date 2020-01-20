@@ -1,10 +1,10 @@
 (() => ({
-  name: 'IconButton',
+  name: 'RoundButton',
   icon: 'ButtonIcon',
   category: 'CONTENT',
   structure: [
     {
-      name: 'IconButton',
+      name: 'RoundButton',
       options: [
         {
           label: 'Icon',
@@ -39,6 +39,34 @@
                 name: 'Email',
                 value: 'Email',
               },
+            ],
+          },
+        },
+        {
+          type: 'VARIABLE',
+          label: 'Button text',
+          key: 'buttonText',
+          value: ['Button'],
+          configuration: {
+            condition: {
+              type: 'SHOW',
+              option: 'variant',
+              comparator: 'EQ',
+              value: 'extended',
+            },
+          },
+        },
+        {
+          type: 'CUSTOM',
+          label: 'variant',
+          key: 'variant',
+          value: 'round',
+          configuration: {
+            as: 'BUTTONGROUP',
+            dataType: 'string',
+            allowedInput: [
+              { name: 'Round', value: 'round' },
+              { name: 'Extended', value: 'extended' },
             ],
           },
         },
