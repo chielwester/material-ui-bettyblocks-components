@@ -5,11 +5,16 @@
   orientation: 'VERTICAL',
   jsx: (() => {
     const { Button } = window.MaterialUI.Core;
-    const { linkType, color, linkToExternal, variant } = options;
+    const { linkType, color, linkToExternal, variant, size } = options;
     const isDev = B.env === 'dev';
     const button =
       linkType === 'External' ? (
-        <Button variant={variant} color={color} href={linkToExternal}>
+        <Button
+          variant={variant}
+          color={color}
+          href={linkToExternal}
+          size={size}
+        >
           {options.buttonText}
         </Button>
       ) : (
@@ -18,6 +23,7 @@
           color={color}
           component={B.Link}
           endpointId={options.linkTo}
+          size={size}
         >
           {options.buttonText}
         </Button>

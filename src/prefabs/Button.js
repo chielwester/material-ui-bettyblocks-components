@@ -86,6 +86,21 @@
             },
           },
         },
+        {
+          label: 'Size',
+          key: 'size',
+          value: 'medium',
+          type: 'CUSTOM',
+          configuration: {
+            as: 'BUTTONGROUP',
+            dataType: 'string',
+            allowedInput: [
+              { name: 'Small', value: 'small' },
+              { name: 'Medium', value: 'medium' },
+              { name: 'Large', value: 'large' },
+            ],
+          },
+        },
       ],
       descendants: [],
     },
