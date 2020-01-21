@@ -13,10 +13,13 @@
           type: 'TEXT',
         },
         {
+          type: 'SIZE',
+          label: 'Width',
+          key: 'width',
           value: '100%',
-          label: 'Image size',
-          key: 'imgSize',
-          type: 'TEXT',
+          configuration: {
+            as: 'UNIT',
+          },
         },
         {
           value: '',

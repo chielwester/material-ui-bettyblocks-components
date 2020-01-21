@@ -17,7 +17,7 @@
           src={options.imgUrl}
           alt={options.imgAlt ? options.imgAlt : ' '}
           height="auto"
-          width={options.imgSize}
+          width={options.width}
         />
       ) : (
         <div className={classes.placeholderWrapper}>
