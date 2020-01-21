@@ -13,6 +13,15 @@
           value: false,
         },
         {
+          type: 'SIZE',
+          label: 'Width',
+          key: 'width',
+          value: '1px',
+          configuration: {
+            as: 'UNIT'
+          }
+        },
+        {
           type: 'CUSTOM',
           label: 'variant',
           key: 'variant',
