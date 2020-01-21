@@ -12,4 +12,12 @@ module.exports = {
     react: 'React',
     'react-dom': 'ReactDOM',
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
 };

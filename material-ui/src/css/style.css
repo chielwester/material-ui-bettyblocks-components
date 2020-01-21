@@ -1,0 +1,502 @@
+@charset "UTF-8";
+/*===========================================================
+
+    Red Bull UI-Kit Stylesheet
+    By Jasper Zuidhof // jzuidhof@ilionx.com
+    DOB: January 2020
+
+===========================================================*/
+/*===========================================================
+
+    Chapter
+
+===========================================================*/
+
+/*
+    Component
+*/
+
+/* Exception */
+
+/*===========================================================
+
+    Material Overrule
+
+===========================================================*/
+
+.root-1-2-1 {
+  background: transparent;
+}
+
+/*===========================================================
+
+    Font Definitions
+
+===========================================================*/
+
+@font-face {
+  font-family: Bull;
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url(https://resources.redbull.com/fonts/bull/v3/latin/Bull-Medium.woff2)
+      format('woff2'),
+    url(https://resources.redbull.com/fonts/bull/v3/latin/Bull-Medium.woff)
+      format('woff');
+}
+
+@font-face {
+  font-family: Bull;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url(https://resources.redbull.com/fonts/bull/v3/latin/Bull-Bold.woff2)
+      format('woff2'),
+    url(https://resources.redbull.com/fonts/bull/v3/latin/Bull-Bold.woff)
+      format('woff');
+}
+
+@font-face {
+  font-family: Bull;
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url(https://resources.redbull.com/fonts/bull/v3/latin/Bull-Heavy1.woff2)
+      format('woff2'),
+    url(https://resources.redbull.com/fonts/bull/v3/latin/Bull-Heavy1.woff)
+      format('woff');
+}
+
+@font-face {
+  font-family: 'Bull Text';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url(https://resources.redbull.com/fonts/bull-text/v1/latin/BullText-Regular.woff2)
+      format('woff2'),
+    url(https://resources.redbull.com/fonts/bull-text/v1/latin/BullText-Regular.woff)
+      format('woff');
+}
+
+@font-face {
+  font-family: 'Bull Text';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url(https://resources.redbull.com/fonts/bull-text/v1/latin/BullText-Bold.woff2)
+      format('woff2'),
+    url(https://resources.redbull.com/fonts/bull-text/v1/latin/BullText-Bold.woff)
+      format('woff');
+}
+
+/* @font-face {
+  font-family: ios-infinity;
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(static/ios-infinity.b4a9378fc957b162d001.woff2) format('woff2'),
+    url(static/ios-infinity.2b811b6649c278b3ffa1.woff) format('woff');
+} */
+
+/*===========================================================
+
+    Generic Wrapper
+
+===========================================================*/
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-size: 62.5%;
+  font-family: BullText, 'Bull Text', Helvetica, sans-serif;
+  line-height: 1.385;
+  font-weight: 400;
+  font-feature-settings: 'tnum';
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 1.4rem;
+  background-color: #f7f6f6;
+  transition: opacity 0.2s;
+  overflow-y: scroll;
+  opacity: 1;
+}
+
+*,
+:after,
+:before {
+  box-sizing: inherit;
+}
+
+#app .root-1-2-65 {
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  min-height: 100vh;
+  height: 100%;
+  /*overflow: hidden;*/
+  background-color: #f7f6f6;
+}
+
+/*===========================================================
+
+    Generic Inline 
+
+===========================================================*/
+
+.MuiTypography-body1 {
+  font-size: 1.4rem;
+}
+
+.MuiTypography-body2 {
+  font-size: 1.4rem;
+}
+
+/*
+    Headers
+*/
+.MuiTypography-h1,
+.h1,
+h1 {
+  font-family: Bull, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 3rem;
+  line-height: 1.04;
+  font-weight: 800;
+  letter-spacing: 0.09px;
+  margin-top: 2.1rem;
+  margin-bottom: 1.4rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.MuiTypography-h2,
+.h2,
+h2 {
+  font-family: Bull, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: 0.09px;
+  margin-top: 2.1rem;
+  margin-bottom: 1.4rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.MuiTypography-h3,
+.h3,
+h3 {
+  font-family: Bull, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: 0.09px;
+  margin-top: 2.1rem;
+  margin-bottom: 1.4rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.MuiTypography-h4,
+.h4,
+h4 {
+  font-family: Bull, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  line-height: 1.385;
+  font-weight: 700;
+  letter-spacing: 0.08px;
+  margin-top: 2.1rem;
+  margin-bottom: 1.4rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.MuiTypography-h5,
+.h5,
+h5 {
+  font-family: Bull, Helvetica, sans-serif;
+  text-transform: none;
+  font-size: 1.4rem;
+  line-height: 1.385;
+  font-weight: 700;
+  margin-top: 2.1rem;
+  margin-bottom: 1.4rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.MuiTypography-h6,
+.h6,
+h6 {
+  font-family: Bull, Helvetica, sans-serif;
+  text-transform: none;
+  font-size: 1.4rem;
+  line-height: 1.385;
+  font-weight: 700;
+  margin-top: 2.1rem;
+  margin-bottom: 1.4rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.MuiTypography-h1,
+.h1:first-child,
+h1:first-child,
+.MuiTypography-h2,
+.h2:first-child,
+h2:first-child,
+.MuiTypography-h3,
+.h3:first-child,
+h3:first-child,
+.MuiTypography-h4,
+.h4:first-child,
+h4:first-child,
+.MuiTypography-h5,
+.h5:first-child,
+h5:first-child,
+.MuiTypography-h6,
+.h6:first-child,
+h6:first-child {
+  margin-top: 0;
+}
+
+/*
+    Paragraphs
+*/
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.4rem;
+}
+
+.MuiTypography-root li,
+.MuiTypography-root p {
+  max-width: 60em;
+}
+
+/*
+    Order List / Unondered Lists
+*/
+
+dl,
+ol,
+ul {
+  margin: 0 0 1.4rem;
+  padding: 0 0 0 2.8rem;
+}
+
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+  margin-bottom: 0;
+}
+
+li {
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+
+/*
+    Links
+*/
+
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+.link,
+a {
+  color: #d2003c;
+  text-decoration: none;
+}
+
+.link:focus,
+.link:hover,
+a:focus,
+a:hover {
+  color: #95002b;
+  text-decoration: underline;
+  -webkit-text-decoration-skip: ink;
+  text-decoration-skip-ink: auto;
+}
+
+.link,
+[role='button'] {
+  cursor: pointer;
+}
+
+[role='button'],
+a,
+area,
+button,
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
+
+/*
+    Divider
+*/
+.MuiDivider-root,
+hr {
+  height: 1px;
+  margin-bottom: 15px;
+  border: 0;
+  background-color: #e8e7e7;
+}
+
+/*===========================================================
+
+    AppBar 
+
+===========================================================*/
+
+.MuiAppBar-root {
+  align-items: flex-start;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  height: 60px;
+  position: relative;
+  transition: height 0.3s;
+  z-index: 300;
+}
+
+.MuiAppBar-colorPrimary {
+  background: #d2003c;
+  color: #fff;
+  box-sizing: content-box;
+  padding: 0;
+}
+
+.MuiAppBar-positionStatic {
+  position: static;
+  transform: translateZ(0);
+}
+
+/*===========================================================
+
+    SideBar
+
+    TODO: Fix html location + wrappers
+
+===========================================================*/
+
+.MuiDrawer-paper {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  /*transform: translate3d(-100%,0,0);*/
+  transition: transform 0.4s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  /* width: 100%; */
+  z-index: 1;
+}
+
+/*
+    Buttons
+*/
+
+.MuiListItem-button:hover {
+  background-color: #f7f6f6;
+  color: #d2003c;
+  text-decoration: none;
+}
+
+/*===========================================================
+
+    Card
+
+===========================================================*/
+
+.MuiCardHeader-root {
+}
+
+.MuiCardHeader-root + .MuiCardContent-root {
+  padding-top: 0;
+}
+
+.MuiCard-root {
+  background: #fff;
+  border: 1px solid #e8e7e7;
+  border-radius: 2px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: calc(100% - 15px);
+  box-shadow: none;
+}
+
+.MuiCardContent-root {
+}
+
+/*===========================================================
+
+    Buttons
+
+===========================================================*/
+
+button,
+.MuiButton-root {
+  display: inline-block;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d2cfd0;
+  vertical-align: middle;
+  text-align: center;
+  white-space: nowrap;
+  font-family: Bull, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 18px;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 2px;
+  background-image: none;
+  padding: 6px 9px;
+  margin: 0;
+  transition: all 120ms ease-out;
+  text-transform: initial;
+}
+
+button:focus,
+.MuiButton-root,
+.MuiButton-root.button--focus,
+.MuiButton-root:focus {
+  background-color: #e8e7e7;
+  border: 1px solid #d2cfd0;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+button:hover,
+.MuiButton-root:hover {
+  background-color: #d2cfd0;
+  border-color: #d2cfd0;
+  color: rgba(0, 0, 0, 0.87);
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.MuiButton-contained {
+  box-shadow: none;
+}
