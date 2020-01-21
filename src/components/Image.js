@@ -16,6 +16,8 @@
           className={classes.image}
           src={options.imgUrl}
           alt={options.imgAlt ? options.imgAlt : ' '}
+          height="auto"
+          width={options.imgSize}
         />
       ) : (
         <div className={classes.placeholderWrapper}>
@@ -51,10 +53,6 @@
         backgroundColor: '#F0F1F5',
         border: '0.0625rem dashed #AFB5C8',
         paddingBottom: ({ options: { imgUrl } }) => !imgUrl && '62.5%',
-      },
-      image: {
-        width: '100%',
-        height: 'auto',
       },
       placeholderWrapper: {
         position: 'absolute',
