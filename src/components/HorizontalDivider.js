@@ -10,11 +10,21 @@
     const divider = (
       <Divider
         light={light}
+        className={classes.root}
         variant={variant}
         orientation="horizontal"
       ></Divider>
     );
-    return isDev ? <div>{divider}</div> : divider;
+    return isDev ? <div className={classes.dev}>{divider}</div> : divider;
   })(),
-  styles: () => () => ({}),
+  styles: () => () => ({
+    root: {
+      height: ({ options: { height } }) => height,
+    },
+    dev: {
+      '& hr': {
+        height: ({ options: { height } }) => height,
+      },
+    },
+  }),
 }))();

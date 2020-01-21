@@ -13,6 +13,15 @@
           value: false,
         },
         {
+          type: 'SIZE',
+          label: 'Height',
+          key: 'height',
+          value: '1px',
+          configuration: {
+            as: 'UNIT'
+          }
+        },
+        {
           type: 'CUSTOM',
           label: 'variant',
           key: 'variant',
