@@ -24,12 +24,15 @@
     'CONTAINER_COMPONENT',
     'FORM_COMPONENT',
     'CONTENT_COMPONENT',
+    'ROW',
   ],
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const isDev = B.env === 'dev';
-		const {__SECRET_CONTEXT_DO_NOT_USE} = B;
-    const [state, setState] = isDev ? useState({}) : useContext(__SECRET_CONTEXT_DO_NOT_USE);
+    const { __SECRET_CONTEXT_DO_NOT_USE } = B;
+    const [state, setState] = isDev
+      ? useState({})
+      : useContext(__SECRET_CONTEXT_DO_NOT_USE);
     const [status, setStatus] = useState(null);
     const [showValid, setShowValid] = useState(null);
     const showPlaceholder = children.length === 0;
@@ -44,7 +47,7 @@
         [name]: value,
       };
       setStatus(null);
-      setState(prev => ({...prev, formState: newState}));
+      setState(prev => ({ ...prev, formState: newState }));
     };
     const handleChange = ({ target: { name, value } }) => {
       const newState = {
@@ -53,7 +56,7 @@
         [name]: value,
       };
       setStatus(null);
-			setState(prev => ({...prev, formState: newState}));
+      setState(prev => ({ ...prev, formState: newState }));
     };
     const postData = () => {
       const redirect = B.getEndpoint(options.redirect) || '';
@@ -162,13 +165,13 @@
     return isDev ? <div>{form}</div> : form;
   })(),
 
-  styles: B => t => {
+  styles: B => t =>
     // const style = new B.Styling(t);
     // const { base } = t;
     // const getSpacing = (idx, device = 'Mobile') =>
     //   idx === '0' ? '0rem' : style.getSpacing(idx, device);
 
-    return {
+    ({
       // root: {
       //   marginTop: ({ options: { outerSpacing } }) =>
       //     getSpacing(outerSpacing[0]),
@@ -248,6 +251,5 @@
         borderStyle: 'dashed',
         backgroundColor: '#F0F1F5',
       },
-    };
-  },
+    }),
 }))();
