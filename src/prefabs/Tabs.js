@@ -22,7 +22,7 @@
               type: 'TEXT',
               label: 'Label',
               key: 'label',
-              value: 'Hoi',
+              value: 'Tab',
             },
             {
               type: 'TOGGLE',
