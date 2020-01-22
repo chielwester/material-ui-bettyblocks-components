@@ -10,7 +10,7 @@
       MuiPickersUtilsProvider,
       KeyboardDatePicker,
     } = window.MaterialUI.Pickers;
-    const [selectedDate, setSelectedDate] = useState(new Date(null));
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const handleDateChange = date => {
       setSelectedDate(date);
