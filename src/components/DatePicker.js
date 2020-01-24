@@ -10,17 +10,26 @@
       MuiPickersUtilsProvider,
       KeyboardDatePicker,
     } = window.MaterialUI.Pickers;
-    const [selectedDate, setSelectedDate] = useState(new Date(null));
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const handleDateChange = date => {
       setSelectedDate(date);
       if (options.handleValueChange) {
         options.handleValueChange({
-          name: options.name,
+          name: options.formComponentName,
           value: date.toJSON(),
         });
       }
     };
+
+    useEffect(() => {
+      if(options.handleValueChange) {
+        options.handleValueChange({
+          name: options.formComponentName,
+          value: selectedDate.toJSON(),
+        });
+      }
+    }, [])
 
     const datepicker = (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
