@@ -25,6 +25,7 @@
     'TABS',
     'TEXT',
     'ROW',
+    'DROPZONE'
   ],
   orientation: 'HORIZONTAL',
   jsx: (() => {
