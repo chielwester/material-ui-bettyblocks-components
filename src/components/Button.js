@@ -18,28 +18,32 @@
     const button =
       linkType === 'External' ? (
         <Button
-          variant={variant}
-          color={color}
+          variant={parent ? parent.variant : variant}
+          color={parent ? parent.color : color}
           href={linkToExternal}
-          size={size}
+          size={parent ? parent.size : size}
+          disabled={parent ? parent.disabled : false}
+          fullWidth={parent ? parent.fullWidth : false}
           startIcon={
             startIcon !== 'None' ? React.createElement(Icons[startIcon]) : null
           }
         >
-          {options.buttonText}{' '}
+          {options.buttonText}
         </Button>
       ) : (
         <Button
-          variant={variant}
-          color={color}
+          variant={parent ? parent.variant : variant}
+          color={parent ? parent.color : color}
           component={B.Link}
           endpointId={options.linkTo}
-          size={size}
+          size={parent ? parent.size : size}
+          disabled={parent ? parent.disabled : false}
+          fullWidth={parent ? parent.fullWidth : false}
           startIcon={
             startIcon !== 'None' ? React.createElement(Icons[startIcon]) : null
           }
         >
-          {options.buttonText}{' '}
+          {options.buttonText}
         </Button>
       );
     return isDev ? <div> {button} </div> : button;

@@ -1,0 +1,38 @@
+(() => ({
+  name: 'ButtonGroup',
+  type: 'BUTTON',
+  allowedTypes: ['BUTTON'],
+  orientation: 'VERTICAL',
+  jsx: (() => {
+    const { ButtonGroup } = window.MaterialUI.Core;
+    const { color, variant, size, fullWidth, disabled } = options;
+
+    return (
+      <div className={classes.root}>
+        <ButtonGroup
+          size={size}
+          variant={variant}
+          color={color}
+          fullWidth={fullWidth}
+          disabled={disabled}
+        >
+          <B.Children
+            size={size}
+            variant={variant}
+            color={color}
+            disabled={disabled}
+            fullWidth={fullWidth}
+          >
+            {children}
+          </B.Children>
+        </ButtonGroup>
+      </div>
+    );
+  })(),
+  styles: () => () => ({
+    root: {
+      flexGrow: 1,
+      height: '200px',
+    },
+  }),
+}))();

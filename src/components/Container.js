@@ -54,18 +54,16 @@
     );
     return isDev ? <div>{container}</div> : container;
   })(),
-  styles: () => () => {
-    return {
-      dev: {
-        paddingBottom: '10px',
-      },
-      pristine: {
-        borderWidth: '0.0625rem',
-        borderColor: '#AFB5C8',
-        borderStyle: 'dashed',
-        backgroundColor: '#F0F1F5',
-        height: '100px',
-      },
-    };
-  },
+  styles: () => () => ({
+    dev: {
+      paddingBottom: '10px',
+    },
+    pristine: {
+      borderWidth: '0.0625rem',
+      borderColor: '#AFB5C8',
+      borderStyle: 'dashed',
+      backgroundColor: '#F0F1F5',
+      height: '100px',
+    },
+  }),
 }))();
