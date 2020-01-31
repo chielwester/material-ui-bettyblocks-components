@@ -1,7 +1,7 @@
 (() => ({
   name: 'Tab',
   icon: 'ButtonIcon',
-  category: 'NAVIGATION',
+  category: 'CONTENT',
   structure: [
     {
       name: 'Tab',

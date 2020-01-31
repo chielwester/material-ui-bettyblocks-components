@@ -15,6 +15,7 @@
     const tabs = (
       <>
         <AppBar position="static">
+        {console.log('test')}
           <Tabs aria-label="simple tabs example" onChange={handleChange}>
             {isDev
               ? children
