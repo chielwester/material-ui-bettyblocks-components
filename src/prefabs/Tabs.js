@@ -16,13 +16,12 @@
       descendants: [
         {
           name: 'Tab',
-          descendants: [],
           options: [
             {
               type: 'TEXT',
               label: 'Label',
               key: 'label',
-              value: 'Tab',
+              value: 'New tab',
             },
             {
               type: 'TOGGLE',
@@ -103,6 +102,7 @@
               },
             },
           ],
+          descendants: [],
         },
       ],
     },
