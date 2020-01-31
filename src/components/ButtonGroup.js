@@ -32,7 +32,6 @@
   styles: () => () => ({
     root: {
       flexGrow: 1,
-      height: '200px',
     },
   }),
 }))();
