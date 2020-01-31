@@ -1,6 +1,6 @@
 (() => ({
-  name: 'Tab',
-  type: 'TAB',
+  name: 'NavigationTab',
+  type: 'NAVIGATION_TAB',
   allowedTypes: [],
   orientation: 'HORIZONTAL',
   jsx: (() => {
