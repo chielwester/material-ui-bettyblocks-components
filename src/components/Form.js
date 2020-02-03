@@ -25,6 +25,7 @@
     'FORM_COMPONENT',
     'CONTENT_COMPONENT',
     'ROW',
+    'DROPZONE'
   ],
   orientation: 'HORIZONTAL',
   jsx: (() => {
