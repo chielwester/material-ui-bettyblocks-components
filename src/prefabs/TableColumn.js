@@ -1,6 +1,6 @@
 (() => ({
   name: 'TableColumn',
-  icon: 'Table',
+  icon: 'DataTableColumn',
   category: 'DATA',
   structure: [
     {
