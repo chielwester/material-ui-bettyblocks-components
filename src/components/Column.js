@@ -28,6 +28,7 @@
     'TEXT',
     'CHECKBOX',
     'SUBMIT_BUTTON',
+    'LINK',
   ],
   orientation: 'VERTICAL',
   jsx: (

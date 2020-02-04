@@ -28,6 +28,7 @@
     'TABLE',
     'TABS',
     'TEXT',
+    'LINK',
     // 'BODY_COMPONENT',
     // 'CONTAINER_COMPONENT',
     // 'CONTENT_COMPONENT',

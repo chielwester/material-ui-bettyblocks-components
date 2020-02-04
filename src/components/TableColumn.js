@@ -1,12 +1,12 @@
 (() => ({
   name: 'TableColumn',
   type: 'TABLE_COLUMN',
-  allowedTypes: ['TEXT', 'BUTTON', 'DIVIDER', 'CHIP'],
+  allowedTypes: ['TEXT', 'BUTTON', 'DIVIDER', 'CHIP', 'LINK'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const { TableCell, TableSortLabel } = window.MaterialUI.Core;
     const { row, order, headerOnly, orderBy, onRequestSort } = parent || {};
-    const { env, GetOneProvider, getProperty, Link } = B;
+    const { env, GetOneProvider, getProperty } = B;
     const isDev = env === 'dev';
     const { label, align } = options;
     const propertyName = options.property

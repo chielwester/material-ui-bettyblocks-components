@@ -18,8 +18,8 @@
           key: 'height',
           value: '1px',
           configuration: {
-            as: 'UNIT'
-          }
+            as: 'UNIT',
+          },
         },
         {
           type: 'CUSTOM',

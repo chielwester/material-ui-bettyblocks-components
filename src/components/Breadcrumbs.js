@@ -4,7 +4,7 @@
   allowedTypes: ['LINK'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
-    const isDev = B.env == 'dev';
+    const isDev = B.env === 'dev';
     const { Breadcrumbs } = window.MaterialUI.Core;
     const breadcrumbs =
       children.length || !isDev ? (

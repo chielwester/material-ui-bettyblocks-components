@@ -25,7 +25,8 @@
     'FORM_COMPONENT',
     'CONTENT_COMPONENT',
     'ROW',
-    'DROPZONE'
+    'DROPZONE',
+    'LINK',
   ],
   orientation: 'HORIZONTAL',
   jsx: (() => {
@@ -166,7 +167,7 @@
     return isDev ? <div>{form}</div> : form;
   })(),
 
-  styles: B => t =>
+  styles: () => () =>
     // const style = new B.Styling(t);
     // const { base } = t;
     // const getSpacing = (idx, device = 'Mobile') =>
