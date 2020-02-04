@@ -25,12 +25,53 @@
           type: 'TEXT',
         },
         {
+          type: 'TOGGLE',
+          label: 'Data options',
+          key: 'dataOptions',
+          value: false,
+        },
+        {
+          type: 'MODEL',
+          label: 'Model',
+          key: 'model',
+          value: '',
+          configuration: {
+            // condition: {
+            //   type: 'SHOW',
+            //   option: 'dataOptions',
+            //   comparator: 'EQ',
+            //   value: true,
+            // },
+          },
+        },
+        {
+          type: 'PROPERTY',
+          label: 'Property',
+          key: 'property',
+          value: '',
+          configuration: {
+            dependsOn: 'model',
+            // condition: {
+            //   type: 'SHOW',
+            //   option: 'dataOptions',
+            //   comparator: 'EQ',
+            //   value: true,
+            // },
+          },
+        },
+        {
           type: 'TEXT',
           label: 'Options',
           key: 'selectOptions',
           value: 'a\nb\nc',
           configuration: {
             as: 'MULTILINE',
+            // condition: {
+            //   type: 'SHOW',
+            //   option: 'dataOptions',
+            //   comparator: 'EQ',
+            //   value: false,
+            // },
           },
         },
         {
