@@ -1,7 +1,7 @@
 (() => ({
   name: 'TableColumn',
   type: 'TABLE_COLUMN',
-  allowedTypes: ['TEXT', 'BUTTON', 'DIVIDER', 'CHIP', 'LINK'],
+  allowedTypes: ['TEXT', 'BUTTON', 'DIVIDER', 'CHIP', 'LINK', 'SWITCH'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const { TableCell, TableSortLabel } = window.MaterialUI.Core;

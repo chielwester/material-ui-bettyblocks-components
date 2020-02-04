@@ -1,7 +1,7 @@
 (() => ({
   name: 'ListItemText',
   type: 'LIST_ITEM',
-  allowedTypes: ['TEXT', 'IMAGE', 'CHIP', 'BUTTON', 'LINK'],
+  allowedTypes: ['TEXT', 'IMAGE', 'CHIP', 'BUTTON', 'LINK', 'SWITCH'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const { ListItem, ListItemText } = window.MaterialUI.Core;

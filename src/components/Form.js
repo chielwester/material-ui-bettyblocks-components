@@ -27,6 +27,7 @@
     'ROW',
     'DROPZONE',
     'LINK',
+    'SWITCH',
   ],
   orientation: 'HORIZONTAL',
   jsx: (() => {

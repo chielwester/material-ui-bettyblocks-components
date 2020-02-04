@@ -1,7 +1,15 @@
 (() => ({
   name: 'Tooltip',
   type: 'TOOLTIP',
-  allowedTypes: ['BUTTON', 'CHIP', 'IMAGE', 'PROGRESS', 'TEXT', 'LINK'],
+  allowedTypes: [
+    'BUTTON',
+    'CHIP',
+    'IMAGE',
+    'PROGRESS',
+    'TEXT',
+    'LINK',
+    'SWITCH',
+  ],
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const { Tooltip } = window.MaterialUI.Core;

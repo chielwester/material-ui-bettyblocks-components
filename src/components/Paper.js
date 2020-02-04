@@ -26,6 +26,7 @@
     'TEXT',
     'ROW',
     'LINK',
+    'SWITCH',
   ],
   orientation: 'HORIZONTAL',
   jsx: (() => {

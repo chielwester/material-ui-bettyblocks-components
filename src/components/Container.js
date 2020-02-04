@@ -29,6 +29,7 @@
     'TABS',
     'TEXT',
     'LINK',
+    'SWITCH',
     // 'BODY_COMPONENT',
     // 'CONTAINER_COMPONENT',
     // 'CONTENT_COMPONENT',
