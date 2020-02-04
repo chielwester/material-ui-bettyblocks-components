@@ -25,6 +25,7 @@
     'TABS',
     'TEXT',
     'ROW',
+    'LINK',
   ],
   orientation: 'HORIZONTAL',
   jsx: (() => {

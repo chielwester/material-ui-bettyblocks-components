@@ -25,6 +25,7 @@
     'FORM_COMPONENT',
     'CONTENT_COMPONENT',
     'ROW',
+    'LINK',
   ],
   orientation: 'HORIZONTAL',
   jsx: (() => {
