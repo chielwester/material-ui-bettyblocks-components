@@ -4,8 +4,9 @@
   allowedTypes: ['TAB'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
-    const { Tabs, AppBar, Tab, Typography, Box } = window.MaterialUI.Core;
+    const { Tabs, AppBar, Tab, Typography } = window.MaterialUI.Core;
     const isDev = B.env === 'dev';
+    const { showall } = options;
     const [indexValue, setIndexValue] = useState(0);
 
     const handleChange = (event, newValue) => {
@@ -15,32 +16,26 @@
     const tabs = (
       <>
         <AppBar position="static">
-          <Tabs aria-label="simple tabs example" onChange={handleChange}>
-            {isDev
-              ? children
-              : [...children].map((x, index) => (
-                  <Tab label={x.props.options.label} />
-                ))}
+          <Tabs aria-label="tabs" onChange={handleChange}>
+            {[...children].map((child, _index) => (
+              <Tab label={isDev ? 'Tab' : child.props.options.label} />
+            ))}
           </Tabs>
         </AppBar>
 
-        {[...children].map((x, index) => (
+        {[...children].map((_child, index) => (
           <Typography
             key={index}
             variant={options.title_variant}
             component="div"
             role="tabpanel"
-            hidden={indexValue !== index}
+            hidden={isDev && showall ? !showall : indexValue !== index}
             id={`full-width-tabpanel-${index}`}
             aria-labelledby={`full-width-tab-${index}`}
           >
-            {indexValue === index && (
-              <Box p={3}>
-                <Typography variant={!isDev ? x.props.options.title_variant : 'h4'}>{!isDev ? x.props.options.title : 'Title placeholder'}</Typography>
-
-                <Typography variant={!isDev ? x.props.options.content_variant : 'body2'}>{!isDev? x.props.options.content : 'Content placeholder'}</Typography>
-              </Box>
-            )}
+            {isDev && showall
+              ? children[index]
+              : indexValue === index && children[index]}
           </Typography>
         ))}
       </>
