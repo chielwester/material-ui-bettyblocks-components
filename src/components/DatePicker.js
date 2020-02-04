@@ -23,13 +23,13 @@
     };
 
     useEffect(() => {
-      if(options.handleValueChange) {
+      if (options.handleValueChange) {
         options.handleValueChange({
           name: options.formComponentName,
           value: selectedDate.toJSON(),
         });
       }
-    }, [])
+    }, []);
 
     const datepicker = (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -50,7 +50,7 @@
       </MuiPickersUtilsProvider>
     );
 
-    return env == 'prod' ? datepicker : <div>{datepicker}</div>;
+    return env === 'prod' ? datepicker : <div>{datepicker}</div>;
   })(),
-  styles: B => ({ typography }) => ({}),
+  styles: () => () => ({}),
 }))();

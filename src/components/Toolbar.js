@@ -1,7 +1,7 @@
 (() => ({
   name: 'Toolbar',
   type: 'TOOLBAR',
-  allowedTypes: ['NAVIGATION_TABS', 'BUTTON'],
+  allowedTypes: ['NAVIGATION_TABS', 'BUTTON', 'LINK', 'SWITCH'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const { Toolbar, IconButton, Typography } = window.MaterialUI.Core;

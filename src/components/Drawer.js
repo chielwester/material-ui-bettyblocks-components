@@ -24,6 +24,8 @@
     'TABLE',
     'TABS',
     'TEXT',
+    'LINK',
+    'SWITCH',
     // 'BODY_COMPONENT',
     // 'CONTAINER_COMPONENT',
     // 'CONTENT_COMPONENT',
@@ -44,14 +46,12 @@
     );
     return isDev ? <div>{drawer}</div> : drawer;
   })(),
-  styles: () => () => {
-    return {
-      dev: {
-        '& .MuiPaper-root': {
-          position: 'static', // :-(
-        },
-        minHeight: '100px',
+  styles: () => () => ({
+    dev: {
+      '& .MuiPaper-root': {
+        position: 'static', // :-(
       },
-    };
-  },
+      minHeight: '100px',
+    },
+  }),
 }))();
