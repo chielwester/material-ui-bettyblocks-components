@@ -1,6 +1,6 @@
 (() => ({
   name: 'Switch',
-  icon: 'AlertIcon',
+  icon: 'CheckboxIcon',
   category: 'CONTENT',
   structure: [
     {
