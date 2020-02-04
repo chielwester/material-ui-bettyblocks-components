@@ -1,17 +1,24 @@
 (() => ({
   name: 'Tab',
   type: 'TAB',
-  allowedTypes: [],
+  allowedTypes: ['BOX', 'PAPER'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
-    const { Tab } = window.MaterialUI.Core;
+    const { Box } = window.MaterialUI.Core;
     const isDev = B.env === 'dev';
-    const tab = (
-      <Tab
-        label={options.label}
-      />
-    );
-    return isDev ? <div>{tab}</div> : tab;
+    const box = <Box>{children}</Box>;
+    return isDev ? <div>{box}</div> : box;
   })(),
-  styles: () => () => ({}),
+  styles: () => () => ({
+    dev: {
+      paddingBottom: '10px',
+    },
+    pristine: {
+      borderWidth: '0.0625rem',
+      borderColor: '#AFB5C8',
+      borderStyle: 'dashed',
+      backgroundColor: '#F0F1F5',
+      height: '100px',
+    },
+  }),
 }))();
