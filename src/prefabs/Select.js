@@ -37,7 +37,7 @@
           type: 'TOGGLE',
           label: 'Full width',
           key: 'fullWidth',
-          value: false,
+          value: true,
         },
         {
           type: 'TOGGLE',
