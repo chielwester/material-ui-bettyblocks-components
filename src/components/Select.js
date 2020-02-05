@@ -20,7 +20,7 @@
       helperText,
       selectOptions,
       model,
-      dataOptions,
+      optionType,
       property,
     } = options;
     const isDev = B.env === 'dev';
@@ -45,7 +45,7 @@
         margin={margin}
         helperText={helperText}
       >
-        {!dataOptions ? (
+        {optionType === 'static' ? (
           (selectOptions || '').split('\n').map(option => (
             <MenuItem key={option} value={option}>
               {option}

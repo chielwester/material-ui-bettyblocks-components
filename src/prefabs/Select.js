@@ -25,10 +25,18 @@
           type: 'TEXT',
         },
         {
-          type: 'TOGGLE',
-          label: 'Data options',
-          key: 'dataOptions',
-          value: false,
+          label: 'Option type',
+          key: 'optionType',
+          value: 'static',
+          type: 'CUSTOM',
+          configuration: {
+            as: 'BUTTONGROUP',
+            dataType: 'string',
+            allowedInput: [
+              { name: 'Static', value: 'static' },
+              { name: 'Data', value: 'data' },
+            ],
+          },
         },
         {
           type: 'MODEL',
@@ -36,12 +44,12 @@
           key: 'model',
           value: '',
           configuration: {
-            // condition: {
-            //   type: 'SHOW',
-            //   option: 'dataOptions',
-            //   comparator: 'EQ',
-            //   value: true,
-            // },
+            condition: {
+              type: 'SHOW',
+              option: 'optionType',
+              comparator: 'EQ',
+              value: 'data',
+            },
           },
         },
         {
@@ -51,12 +59,12 @@
           value: '',
           configuration: {
             dependsOn: 'model',
-            // condition: {
-            //   type: 'SHOW',
-            //   option: 'dataOptions',
-            //   comparator: 'EQ',
-            //   value: true,
-            // },
+            condition: {
+              type: 'SHOW',
+              option: 'optionType',
+              comparator: 'EQ',
+              value: 'data',
+            },
           },
         },
         {
@@ -66,12 +74,12 @@
           value: 'a\nb\nc',
           configuration: {
             as: 'MULTILINE',
-            // condition: {
-            //   type: 'SHOW',
-            //   option: 'dataOptions',
-            //   comparator: 'EQ',
-            //   value: false,
-            // },
+            condition: {
+              type: 'SHOW',
+              option: 'optionType',
+              comparator: 'EQ',
+              value: 'static',
+            },
           },
         },
         {
