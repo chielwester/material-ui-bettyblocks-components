@@ -16,9 +16,14 @@
       // error,
       helperText,
       selectOptions,
+      model,
+      optionType,
+      property,
     } = options;
     const isDev = B.env === 'dev';
+    const { GetAll, getProperty } = B;
     const [value, setValue] = useState(text && text.length ? text : undefined);
+    const labelProperty = getProperty(property);
     const {
       FormControl,
       RadioGroup,
@@ -35,14 +40,41 @@
         onChange={event => setValue(event.target.value)}
         helperText={helperText}
       >
-        {(selectOptions || '').split('\n').map(option => (
-          <FormControlLabel
-            disabled={disabled}
-            value={option}
-            control={<Radio color={color} />}
-            label={option}
-          />
-        ))}
+        {optionType === 'static' ? (
+          (selectOptions || '')
+            .split('\n')
+            .map(option => (
+              <FormControlLabel
+                disabled={disabled}
+                value={option}
+                control={<Radio color={color} />}
+                label={option}
+              />
+            ))
+        ) : (
+          <GetAll modelId={model} skip={0} take={15}>
+            {({ loading, error, data, refetch }) => {
+              if (loading) {
+                return <span>Loading...</span>;
+              }
+
+              if (error) {
+                return <span>Something went wrong: {error.message} :(</span>;
+              }
+
+              const { results } = data;
+
+              return results.map(item => (
+                <FormControlLabel
+                  disabled={disabled}
+                  value={item.id}
+                  control={<Radio color={color} />}
+                  label={item[labelProperty.name]}
+                />
+              ));
+            }}
+          </GetAll>
+        )}
       </RadioGroup>
     );
 
