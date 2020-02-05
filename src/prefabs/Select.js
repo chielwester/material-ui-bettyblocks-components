@@ -132,7 +132,7 @@
         {
           value: false,
           label: 'Error',
-          key: 'error',
+          key: 'hasError',
           type: 'TOGGLE',
         },
         {

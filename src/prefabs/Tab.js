@@ -1,6 +1,6 @@
 (() => ({
   name: 'Tab',
-  icon: 'TABPANEL',
+  icon: 'TabGroupIcon',
   category: 'LAYOUT',
   structure: [
     {
@@ -11,7 +11,7 @@
           key: 'label',
           value: 'TAB',
           type: 'TEXT',
-        }
+        },
       ],
       descendants: [
         {

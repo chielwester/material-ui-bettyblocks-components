@@ -15,7 +15,7 @@
       type,
       size,
       fullWidth,
-      error,
+      hasError,
       margin,
       helperText,
       selectOptions,
@@ -29,51 +29,67 @@
     const { TextField, MenuItem } = window.MaterialUI.Core;
     const labelProperty = getProperty(property);
 
-    const selectField = (
-      <TextField
-        select
-        value={value}
-        size={size}
-        variant={variant}
-        fullWidth={fullWidth}
-        onChange={event => setValue(event.target.value)}
-        inputProps={{ name }}
-        required={required}
-        disabled={disabled}
-        label={label}
-        error={error}
-        margin={margin}
-        helperText={helperText}
-      >
-        {optionType === 'static' ? (
-          (selectOptions || '').split('\n').map(option => (
+    const selectField =
+      optionType === 'static' ? (
+        <TextField
+          select
+          value={value}
+          size={size}
+          variant={variant}
+          fullWidth={fullWidth}
+          onChange={event => setValue(event.target.value)}
+          inputProps={{ name }}
+          required={required}
+          disabled={disabled}
+          label={label}
+          error={hasError}
+          margin={margin}
+          helperText={helperText}
+        >
+          {(selectOptions || '').split('\n').map(option => (
             <MenuItem key={option} value={option}>
               {option}
             </MenuItem>
-          ))
-        ) : (
-          <GetAll modelId={model} skip={0} take={15}>
-            {({ loading, error, data, refetch }) => {
-              if (loading) {
-                return <span>Loading...</span>;
-              }
+          ))}
+        </TextField>
+      ) : (
+        <GetAll modelId={model} skip={0} take={50}>
+          {({ loading, error, data, refetch }) => {
+            if (loading) {
+              return <span>Loading...</span>;
+            }
 
-              if (error) {
-                return <span>Something went wrong: {error.message} :(</span>;
-              }
+            if (error) {
+              return <span>Something went wrong: {error.message} :(</span>;
+            }
 
-              const { results } = data;
-
-              return results.map(item => (
-                <MenuItem key={item.id} value={item.id}>
-                  {item[labelProperty.name]}
-                </MenuItem>
-              ));
-            }}
-          </GetAll>
-        )}
-      </TextField>
-    );
+            const { results } = data;
+            return (
+              <TextField
+                select
+                value={value}
+                size={size}
+                variant={variant}
+                fullWidth={fullWidth}
+                onChange={event => setValue(event.target.value)}
+                inputProps={{ name }}
+                required={required}
+                disabled={disabled}
+                label={label}
+                error={hasError}
+                margin={margin}
+                helperText={helperText}
+              >
+                {results.map(item => (
+                  <MenuItem key={item.id} value={item.id}>
+                    {item[labelProperty.name]}
+                  </MenuItem>
+                ))}
+              </TextField>
+            );
+          }}
+        </GetAll>
+      );
 
     return isDev ? (
       <div className={classes.selectField}>{selectField}</div>
