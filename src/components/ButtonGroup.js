@@ -1,7 +1,7 @@
 (() => ({
   name: 'ButtonGroup',
   type: 'BUTTON',
-  allowedTypes: ['BUTTON'],
+  allowedTypes: ['BUTTONGROUPBUTTON'],
   orientation: 'VERTICAL',
   jsx: (() => {
     const { ButtonGroup } = window.MaterialUI.Core;

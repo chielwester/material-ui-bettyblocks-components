@@ -1,27 +1,22 @@
 (() => ({
-  name: 'Button',
-  type: 'BUTTON',
+  name: 'ButtonGroupButton',
+  type: 'BUTTONGROUPBUTTON',
   allowedTypes: [],
   orientation: 'VERTICAL',
   jsx: (() => {
     const { Icons } = window.MaterialUI;
     const { Button } = window.MaterialUI.Core;
-    const {
-      linkType,
-      color,
-      linkToExternal,
-      variant,
-      size,
-      startIcon,
-    } = options;
+    const { linkType, linkToExternal, startIcon } = options;
     const isDev = B.env === 'dev';
     const button =
       linkType === 'External' ? (
         <Button
-          variant={variant}
-          color={color}
+          variant={parent.variant}
+          color={parent.color}
           href={linkToExternal}
-          size={size}
+          size={parent.size}
+          disabled={parent.disabled}
+          fullWidth={parent.fullWidth}
           startIcon={
             startIcon !== 'None' ? React.createElement(Icons[startIcon]) : null
           }
@@ -30,11 +25,13 @@
         </Button>
       ) : (
         <Button
-          variant={variant}
-          color={color}
+          variant={parent.variant}
+          color={parent.color}
           component={B.Link}
           endpointId={options.linkTo}
-          size={size}
+          size={parent.size}
+          disabled={parent.disabled}
+          fullWidth={parent.fullWidth}
           startIcon={
             startIcon !== 'None' ? React.createElement(Icons[startIcon]) : null
           }
