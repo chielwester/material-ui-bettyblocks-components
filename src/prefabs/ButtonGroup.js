@@ -1,6 +1,6 @@
 (() => ({
   name: 'ButtonGroup',
-  icon: 'ButtonIcon',
+  icon: 'ButtonGroupIcon',
   category: 'CONTENT',
   structure: [
     {
