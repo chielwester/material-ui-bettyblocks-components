@@ -51,9 +51,9 @@
                 label={option}
               />
             ))
-        ) : (
+        ) : !isDev ? (
           <GetAll modelId={model} skip={0} take={15}>
-            {({ loading, error, data, refetch }) => {
+            {({ loading, error, data }) => {
               if (loading) {
                 return <span>Loading...</span>;
               }
@@ -74,6 +74,21 @@
               ));
             }}
           </GetAll>
+        ) : (
+          <>
+            <FormControlLabel
+              disabled={disabled}
+              value="placeholder1"
+              control={<Radio color={color} />}
+              label="Placeholder"
+            />
+            <FormControlLabel
+              disabled={disabled}
+              value="placeholder2"
+              control={<Radio color={color} />}
+              label="Placeholder"
+            />
+          </>
         )}
       </RadioGroup>
     );
