@@ -25,12 +25,61 @@
           type: 'TEXT',
         },
         {
+          label: 'Option type',
+          key: 'optionType',
+          value: 'static',
+          type: 'CUSTOM',
+          configuration: {
+            as: 'BUTTONGROUP',
+            dataType: 'string',
+            allowedInput: [
+              { name: 'Static', value: 'static' },
+              { name: 'Data', value: 'data' },
+            ],
+          },
+        },
+        {
+          type: 'MODEL',
+          label: 'Model',
+          key: 'model',
+          value: '',
+          configuration: {
+            condition: {
+              type: 'SHOW',
+              option: 'optionType',
+              comparator: 'EQ',
+              value: 'data',
+            },
+          },
+        },
+        {
+          type: 'PROPERTY',
+          label: 'Property',
+          key: 'property',
+          value: '',
+          configuration: {
+            dependsOn: 'model',
+            condition: {
+              type: 'SHOW',
+              option: 'optionType',
+              comparator: 'EQ',
+              value: 'data',
+            },
+          },
+        },
+        {
           type: 'TEXT',
           label: 'Options',
           key: 'selectOptions',
           value: 'a\nb\nc',
           configuration: {
             as: 'MULTILINE',
+            condition: {
+              type: 'SHOW',
+              option: 'optionType',
+              comparator: 'EQ',
+              value: 'static',
+            },
           },
         },
         {
