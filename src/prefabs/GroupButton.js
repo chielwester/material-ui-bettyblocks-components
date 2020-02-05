@@ -1,10 +1,10 @@
 (() => ({
-  name: 'ButtonGroupButton',
+  name: 'GroupButton',
   icon: 'ButtonIcon',
   category: 'CONTENT',
   structure: [
     {
-      name: 'ButtonGroupButton',
+      name: 'GroupButton',
       options: [
         {
           type: 'VARIABLE',

@@ -1,6 +1,6 @@
 (() => ({
-  name: 'ButtonGroupButton',
-  type: 'BUTTONGROUPBUTTON',
+  name: 'GroupButton',
+  type: 'GROUPBUTTON',
   allowedTypes: [],
   orientation: 'VERTICAL',
   jsx: (() => {
