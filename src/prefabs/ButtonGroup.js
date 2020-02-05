@@ -109,8 +109,7 @@
       ],
       descendants: [
         {
-          name: 'Button',
-          descendants: [],
+          name: 'ButtonGroupButton',
           options: [
             {
               type: 'VARIABLE',
@@ -154,58 +153,6 @@
                   {
                     name: 'Email',
                     value: 'Email',
-                  },
-                ],
-              },
-            },
-            {
-              type: 'CUSTOM',
-              label: 'variant',
-              key: 'variant',
-              value: 'contained',
-              configuration: {
-                as: 'BUTTONGROUP',
-                dataType: 'string',
-                allowedInput: [
-                  {
-                    name: 'Text',
-                    value: 'text',
-                  },
-                  {
-                    name: 'Outlined',
-                    value: 'outlined',
-                  },
-                  {
-                    name: 'Contained',
-                    value: 'contained',
-                  },
-                ],
-              },
-            },
-            {
-              label: 'Color',
-              key: 'color',
-              value: 'default',
-              type: 'CUSTOM',
-              configuration: {
-                as: 'BUTTONGROUP',
-                dataType: 'string',
-                allowedInput: [
-                  {
-                    name: 'Default',
-                    value: 'default',
-                  },
-                  {
-                    name: 'Inherit',
-                    value: 'inherit',
-                  },
-                  {
-                    name: 'Primary',
-                    value: 'primary',
-                  },
-                  {
-                    name: 'Secondary',
-                    value: 'secondary',
                   },
                 ],
               },
@@ -259,31 +206,8 @@
                 },
               },
             },
-            {
-              label: 'Size',
-              key: 'size',
-              value: 'medium',
-              type: 'CUSTOM',
-              configuration: {
-                as: 'BUTTONGROUP',
-                dataType: 'string',
-                allowedInput: [
-                  {
-                    name: 'Small',
-                    value: 'small',
-                  },
-                  {
-                    name: 'Medium',
-                    value: 'medium',
-                  },
-                  {
-                    name: 'Large',
-                    value: 'large',
-                  },
-                ],
-              },
-            },
           ],
+          descendants: [],
         },
       ],
     },
