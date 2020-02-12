@@ -58,6 +58,13 @@
             ],
           },
         },
+        {
+          type: 'COLOR',
+          label: 'Background color',
+          key: 'background',
+          value: 'Primary',
+        },
+
       ],
       descendants: [],
     },

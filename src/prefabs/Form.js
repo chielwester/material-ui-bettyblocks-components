@@ -29,7 +29,16 @@
           label: 'Error message',
           key: 'formErrorMessage',
           type: 'TEXT',
-        }
+        },
+        {
+          value: '',
+          label: 'Action',
+          key: 'actionId',
+          type: 'ACTION',
+          configuration: {
+            apiVersion: 'v1',
+          },
+        },
       ],
       descendants: [
         // {

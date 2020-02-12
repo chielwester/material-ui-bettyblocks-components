@@ -7,13 +7,14 @@
     const { Button, FormControl } = window.MaterialUI.Core;
     const { variant, disabled, color, margin } = options;
     const isDev = B.env === 'dev';
+
     const button = (
       <FormControl margin={margin}>
         <Button
-          type="submit"
           disabled={disabled}
           variant={variant}
-          color={color}
+          onClick={options.onClick}
+          type="submit"
         >
           {options.buttonText}
         </Button>
@@ -21,9 +22,12 @@
     );
     return isDev ? <div>{button}</div> : button;
   })(),
-  styles: () => () => ({
-    root: {
-      flexGrow: 1,
-    },
-  }),
+  styles: (B) => (t) => {
+    const style = new B.Styling(t);
+    return {
+      root: {
+        flexGrow: 1,
+      },
+    }
+  },
 }))();
