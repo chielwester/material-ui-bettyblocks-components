@@ -30,17 +30,31 @@
     'SUBMIT_BUTTON',
     'LINK',
     'SWITCH',
+    'AUTO_COMPLETE',
+    'DATE_PICKER',
+    'DATE_TIME_PICKER',
+    'TIME_PICKER',
+    'DROPDOWN',
+    'MULTISELECT',
+    'CHECKBOX',
+    'TEXT_INPUT',
+    'RADIO_BUTTON_GROUP',
+    'FILE_INPUT',
+    'IMAGE_INPUT',
+    'SUBMIT_BUTTON',
   ],
   orientation: 'VERTICAL',
-  jsx: (
-    <div className={classes.column}>
+  jsx: (() => {
+    const {Children} = B;
+
+    return (<div className={classes.column}>
       {(() => {
         const isEmpty = children.length === 0;
 
         const isPristine = isEmpty && B.env === 'dev';
 
         return children.length !== 0 ? (
-          children
+          parent && parent.state ? <Children state={parent.state} setState={parent.setState}>{children}</Children> : children
         ) : (
           <div
             className={[
@@ -52,8 +66,8 @@
           </div>
         );
       })()}
-    </div>
-  ),
+    </div>)
+  })(),
   styles: B => theme => {
     const style = new B.Styling(theme);
     const getSpacing = (idx, device = 'Mobile') =>

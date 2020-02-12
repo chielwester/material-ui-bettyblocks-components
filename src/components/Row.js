@@ -5,8 +5,10 @@
   type: 'ROW',
   allowedTypes: ['COLUMN', 'LAYOUT_COMPONENT'],
   orientation: 'HORIZONTAL',
-  jsx: (
-    <div className={classes.container}>
+  jsx: (() => {
+    const {Children} = B;
+
+    return (<div className={classes.container}>
       {(() => {
         const isEmpty = children.length === 0;
 
@@ -20,12 +22,12 @@
               isPristine ? classes.pristine : '',
             ].join(' ')}
           >
-            {isPristine ? 'Row' : children}
+            {isPristine ? 'Row' : parent && parent.state ? <Children state={parent.state} setState={parent.setState}>{children}</Children> : children}
           </section>
         );
       })()}
-    </div>
-  ),
+    </div>)
+  })(),
   styles: B => theme => {
     const style = new B.Styling(theme);
     const width = {
