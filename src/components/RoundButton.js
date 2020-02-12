@@ -25,7 +25,7 @@
         <Fab
           color={color}
           component={B.Link}
-          endpointId={options.linkTo}
+          endpoint={options.linkTo}
           variant={variant}
         >
           {React.createElement(Icons[icon])}

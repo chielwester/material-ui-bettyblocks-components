@@ -24,7 +24,7 @@
           color={color}
           underline="none"
           component={B.Link}
-          endpointId={options.linkTo}
+          endpoint={options.linkTo}
           className={classes.root}
         >
           {label}

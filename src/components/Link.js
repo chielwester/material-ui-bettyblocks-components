@@ -13,7 +13,7 @@
           {options.linkText}
         </Link>
       ) : (
-        <Link color={color} component={B.Link} endpointId={options.linkTo}>
+        <Link color={color} component={B.Link} endpoint={options.linkTo}>
           {options.linkText}
         </Link>
       );
