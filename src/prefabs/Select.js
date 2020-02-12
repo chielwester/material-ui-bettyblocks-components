@@ -20,6 +20,12 @@
         },
         {
           value: '',
+          label: 'Input',
+          key: 'actionInputId',
+          type: 'ACTION_INPUT',
+        },
+        {
+          value: '',
           label: 'Value',
           key: 'text',
           type: 'TEXT',
