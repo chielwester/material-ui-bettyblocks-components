@@ -20,9 +20,10 @@
   })(),
   styles: (B) => theme => {
     const style = new B.Styling(theme);
+    const convertSizes = sizes => sizes.map(size => style.getSpacing(size)).join(' ');
     return {
       chip: {
-        margin: style.getSpacing('M'),
+        margin: ({options: {margin}}) => convertSizes(margin),
       },
     };
   },

@@ -33,6 +33,12 @@
           },
         },
         {
+          type: 'SIZES',
+          label: 'Margin',
+          key: 'margin',
+          value: ['M', 'M', 'M', 'M']
+        },
+        {
           label: 'Color',
           key: 'color',
           value: 'default',
