@@ -13,8 +13,10 @@
         <Button
           disabled={disabled}
           variant={variant}
+          color={color}
           onClick={options.onClick}
           type="submit"
+          disabled={parent.loading ? true : false}
         >
           {options.buttonText}
         </Button>
