@@ -20,13 +20,29 @@
       error,
       margin,
       helperText,
+      actionInputId
     } = options;
     const isDev = B.env === 'dev';
-    const [value, setValue] = useState(text && text.length ? text : undefined);
+    const {getActionInput} = B;
+    const actionInput = getActionInput(actionInputId);
+    const [currentValue, setCurrentValue] = useState();
+    const value = actionInput ? parent.state[actionInput.name] : currentValue;
 
     const { TextField } = window.MaterialUI.Core;
 		const handleChange = (event) => {
-			setValue(event.target.value);
+      const { target: {value: eventValue }} = event;
+
+      // setValue(event.target.value);
+      if(actionInput) {
+        parent.setState({
+          ...parent.state,
+          [actionInput.name]: eventValue
+        });
+      } else {
+        setCurrentValue(eventValue);
+      }
+
+
 			if(options.handleValueChange) {
 				options.handleValueChange({name: formComponentName, value: event.target.value})
 			}
