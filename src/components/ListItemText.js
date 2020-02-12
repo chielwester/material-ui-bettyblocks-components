@@ -25,7 +25,7 @@
         divider={divider}
         selected={selected}
         component={button ? B.Link : 'li'}
-        endpointId={options.linkTo}
+        endpoint={options.linkTo}
       >
         <ListItemText
           primary={primaryText}

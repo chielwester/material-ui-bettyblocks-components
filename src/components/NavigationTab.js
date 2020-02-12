@@ -11,7 +11,7 @@
         disabled={options.disabled}
         label={options.label}
         component={B.Link}
-        endpointId={options.linkTo}
+        endpoint={options.linkTo}
         {...__SECRET_PROPS_DO_NOT_USE}
       />
     );

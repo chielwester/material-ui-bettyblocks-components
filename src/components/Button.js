@@ -33,7 +33,7 @@
           variant={variant}
           color={color}
           component={B.Link}
-          endpointId={options.linkTo}
+          endpoint={options.linkTo}
           size={size}
           startIcon={
             startIcon !== 'None' ? React.createElement(Icons[startIcon]) : null

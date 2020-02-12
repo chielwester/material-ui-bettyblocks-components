@@ -28,7 +28,7 @@
           variant={parent.variant}
           color={parent.color}
           component={B.Link}
-          endpointId={options.linkTo}
+          endpoint={options.linkTo}
           size={parent.size}
           disabled={parent.disabled}
           fullWidth={parent.fullWidth}
