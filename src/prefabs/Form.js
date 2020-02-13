@@ -13,12 +13,6 @@
           type: 'TEXT',
         },
         {
-          value: '',
-          label: 'Redirect after submit',
-          key: 'redirect',
-          type: 'ENDPOINT',
-        },
-        {
           value: 'Thanks for submitting the form!',
           label: 'Success message',
           key: 'formSuccessMessage',
