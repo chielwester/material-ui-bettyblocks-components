@@ -34,7 +34,6 @@
         target: { value: eventValue },
       } = event;
 
-      // setValue(event.target.value);
       if (actionInput) {
         parent.setState({
           ...parent.state,
@@ -75,11 +74,6 @@
     return isDev ? <div>{textField}</div> : textField;
   })(),
   styles: () => () => {
-    return {
-      textField: {
-        width: '200px',
-        margin: '8px',
-      },
-    };
+    return {};
   },
 }))();
