@@ -18,22 +18,47 @@
       freeSolo,
       helperText,
       model,
+      actionInputId
     } = options;
     const isDev = B.env === 'dev';
     const { Autocomplete } = window.MaterialUI.Lab;
     const { TextField, CircularProgress } = window.MaterialUI.Core;
-    const { getProperty } = B;
+    const { getProperty, getActionInput } = B;
+    const actionInput = getActionInput(actionInputId);
+    const [currentValue, setCurrentValue] = useState();
+    const value = actionInput ? parent.state[actionInput.name] : currentValue;
+
     const searchProp = options.property
       ? getProperty(options.property) && getProperty(options.property)
+      : null;
+
+    const valueProp = options.valueproperty
+      ? getProperty(options.valueproperty) && getProperty(options.valueproperty)
       : null;
 
     const [searchParam, setSearchParam] = React.useState('');
     const [open, setOpen] = React.useState(false);
     const [records, setRecords] = React.useState([]);
 
+		const handleChange = (event, newValue) => {
+      if(actionInput) {
+        parent.setState({
+          ...parent.state,
+          [actionInput.name]: newValue[valueProp.name]
+        });
+      } else {
+        setCurrentValue(newValue[valueProp.name]);
+      }
+
+			if(options.handleValueChange) {
+				options.handleValueChange({name: formComponentName, value: newValue[valueProp.name]});
+			}
+		}
+
     const autoComplete = (loading, onInputChange) => (
       <Autocomplete
         onInputChange={onInputChange}
+        onChange={handleChange}
         open={open}
         freeSolo={freeSolo}
         onOpen={() => {
