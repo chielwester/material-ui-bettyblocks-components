@@ -19,3 +19,5 @@ yarn-error.log*
 
 material-ui/dist
 material-ui/node_modules
+
+package-lock.json
