@@ -22,12 +22,34 @@
       model,
       optionType,
       property,
+      actionInputId
     } = options;
     const isDev = B.env === 'dev';
-    const { GetAll, getProperty } = B;
-    const [value, setValue] = useState(text && text.length ? text : undefined);
+    const { GetAll, getProperty, getActionInput } = B;
+    const actionInput = getActionInput(actionInputId);
+    const [currentValue, setCurrentValue] = useState();
+    const value = actionInput ? parent.state[actionInput.name] : currentValue;
     const { TextField, MenuItem } = window.MaterialUI.Core;
     const labelProperty = getProperty(property);
+
+		const handleChange = (event) => {
+      const { target: {value: eventValue }} = event;
+
+      // setValue(event.target.value);
+      if(actionInput) {
+        parent.setState({
+          ...parent.state,
+          [actionInput.name]: eventValue
+        });
+      } else {
+        setCurrentValue(eventValue);
+      }
+
+			if(options.handleValueChange) {
+				options.handleValueChange({name: formComponentName, value: event.target.value})
+			}
+		}
+
 
     const selectField =
       optionType === 'static' ? (
@@ -37,7 +59,7 @@
           size={size}
           variant={variant}
           fullWidth={fullWidth}
-          onChange={event => setValue(event.target.value)}
+          onChange={handleChange}
           inputProps={{ name }}
           required={required}
           disabled={disabled}
@@ -71,7 +93,7 @@
                 size={size}
                 variant={variant}
                 fullWidth={fullWidth}
-                onChange={event => setValue(event.target.value)}
+                onChange={handleChange}
                 inputProps={{ name }}
                 required={required}
                 disabled={disabled}
