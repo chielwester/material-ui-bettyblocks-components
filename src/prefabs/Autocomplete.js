@@ -13,6 +13,12 @@
           type: 'TEXT',
         },
         {
+          value: '',
+          label: 'Input',
+          key: 'actionInputId',
+          type: 'ACTION_INPUT',
+        },
+        {
           value: 'Label',
           label: 'Label',
           key: 'label',
@@ -28,6 +34,12 @@
           value: '',
           label: 'Label property',
           key: 'property',
+          type: 'PROPERTY',
+        },
+        {
+          value: '',
+          label: 'Value property',
+          key: 'valueproperty',
           type: 'PROPERTY',
         },
         {
