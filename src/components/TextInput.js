@@ -20,36 +20,40 @@
       error,
       margin,
       helperText,
-      actionInputId
+      actionInputId,
     } = options;
     const isDev = B.env === 'dev';
-    const {getActionInput} = B;
+    const { getActionInput } = B;
     const actionInput = getActionInput(actionInputId);
     const [currentValue, setCurrentValue] = useState();
     const value = actionInput ? parent.state[actionInput.name] : currentValue;
 
     const { TextField } = window.MaterialUI.Core;
-		const handleChange = (event) => {
-      const { target: {value: eventValue }} = event;
+    const handleChange = event => {
+      const {
+        target: { value: eventValue },
+      } = event;
 
       // setValue(event.target.value);
-      if(actionInput) {
+      if (actionInput) {
         parent.setState({
           ...parent.state,
-          [actionInput.name]: eventValue
+          [actionInput.name]: eventValue,
         });
       } else {
         setCurrentValue(eventValue);
       }
 
-
-			if(options.handleValueChange) {
-				options.handleValueChange({name: formComponentName, value: event.target.value})
-			}
-		}
+      if (options.handleValueChange) {
+        options.handleValueChange({
+          name: formComponentName,
+          value: event.target.value,
+        });
+      }
+    };
     const textField = (
       <TextField
-				name={formComponentName}
+        name={formComponentName}
         value={value}
         size={size}
         variant={variant}
@@ -68,11 +72,7 @@
       />
     );
 
-    return isDev ? (
-      <div >{textField}</div>
-    ) : (
-      textField
-    );
+    return isDev ? <div>{textField}</div> : textField;
   })(),
   styles: () => () => {
     return {
