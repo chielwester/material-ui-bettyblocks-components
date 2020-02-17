@@ -19,6 +19,12 @@
           type: 'TEXT',
         },
         {
+          value: '',
+          label: 'Input',
+          key: 'actionInputId',
+          type: 'ACTION_INPUT',
+        },
+        {
           value: true,
           label: 'Full Width',
           key: 'fullwidth',

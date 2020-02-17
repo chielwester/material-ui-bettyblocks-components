@@ -4,16 +4,28 @@
   allowedTypes: [],
   orientation: 'HORIZONTAL',
   jsx: (() => {
-    const { env } = B;
+    const { env, getActionInput } = B;
     const { DateFnsUtils } = window.MaterialUI;
+    const { actionInputId } = options;
+    const actionInput = getActionInput(actionInputId);
     const {
       MuiPickersUtilsProvider,
       KeyboardDatePicker,
     } = window.MaterialUI.Pickers;
+
     const [selectedDate, setSelectedDate] = useState(new Date());
+    const value = actionInput ? (parent.state[actionInput.name] ? new Date(parent.state[actionInput.name]) : new Date()) : selectedDate;
 
     const handleDateChange = date => {
-      setSelectedDate(date);
+      if (actionInput) {
+        parent.setState({
+          ...parent.state,
+          [actionInput.name]: date.toJSON(),
+        });
+      } else {
+        setSelectedDate(date);
+      }
+
       if (options.handleValueChange) {
         options.handleValueChange({
           name: options.formComponentName,
@@ -42,7 +54,7 @@
           format={options.dateformat}
           label={options.label}
           onChange={handleDateChange}
-          value={selectedDate}
+          value={value}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}

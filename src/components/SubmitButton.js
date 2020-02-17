@@ -4,23 +4,21 @@
   allowedTypes: [],
   orientation: 'VERTICAL',
   jsx: (() => {
-    const { Button, FormControl } = window.MaterialUI.Core;
+    const { Button } = window.MaterialUI.Core;
     const { variant, disabled, color, margin } = options;
     const isDev = B.env === 'dev';
 
     const button = (
-      <FormControl margin={margin}>
         <Button
           disabled={disabled}
           variant={variant}
           color={color}
           onClick={options.onClick}
           type="submit"
-          disabled={parent.loading ? true : false}
+          disabled={parent && parent.loading ? true : false}
         >
           {options.buttonText}
         </Button>
-      </FormControl>
     );
     return isDev ? <div>{button}</div> : button;
   })(),
