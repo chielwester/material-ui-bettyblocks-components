@@ -33,7 +33,23 @@
             apiVersion: 'v1',
           },
         },
+        {
+          value: '',
+          label: 'Model',
+          key: 'model',
+          type: 'MODEL',
+        },
+        {
+          value: ['', 'eq', ''],
+          label: 'Filter',
+          key: 'filter',
+          type: 'FILTER',
+          configuration: {
+            dependsOn: 'model',
+          },
+        },
       ],
+
       descendants: [
         // {
         //   name: 'TextInput',

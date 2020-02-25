@@ -23,10 +23,10 @@
       actionInputId,
     } = options;
     const isDev = B.env === 'dev';
-    const { getActionInput } = B;
+    const { getActionInput, useText } = B;
     const actionInput = getActionInput(actionInputId);
-    const [currentValue, setCurrentValue] = useState();
-    const value = actionInput ? parent.state[actionInput.name] : currentValue;
+    const [currentValue, setCurrentValue] = B.env === 'dev' ? useState(text.join(' ')) : useState(useText(text));
+    const value = actionInput && parent.state[actionInput.name] ? parent.state[actionInput.name] : currentValue;
 
     const { TextField } = window.MaterialUI.Core;
     const handleChange = event => {
@@ -34,12 +34,8 @@
         target: { value: eventValue },
       } = event;
 
-      // setValue(event.target.value);
       if (actionInput) {
-        parent.setState({
-          ...parent.state,
-          [actionInput.name]: eventValue,
-        });
+        parent.handleInputValue({name: actionInput.name, value: eventValue});
       } else {
         setCurrentValue(eventValue);
       }
@@ -51,10 +47,17 @@
         });
       }
     };
+
+    useEffect(() => {
+      if(actionInput && currentValue && currentValue != parent.state[actionInput.name]) {
+        parent.handleInputValue({name: actionInput.name, value: currentValue});
+      }
+    }, []);
+
     const textField = (
       <TextField
         name={formComponentName}
-        value={value}
+        value={B.env === 'dev' ? text.map(textitem => textitem.name ? textitem.name : textitem).join(' ') : value}
         size={size}
         variant={variant}
         placeholder={placeholder}

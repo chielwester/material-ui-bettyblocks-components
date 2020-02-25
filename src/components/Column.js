@@ -54,7 +54,7 @@
         const isPristine = isEmpty && B.env === 'dev';
 
         return children.length !== 0 ? (
-          parent && parent.state ? <Children state={parent.state} setState={parent.setState}>{children}</Children> : children
+          parent && parent.state ? <Children state={parent.state} setState={parent.setState} handleInputValue={parent.handleInputValue}>{children}</Children> : children
         ) : (
           <div
             className={[

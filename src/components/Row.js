@@ -22,7 +22,7 @@
               isPristine ? classes.pristine : '',
             ].join(' ')}
           >
-            {isPristine ? 'Row' : parent && parent.state ? <Children state={parent.state} setState={parent.setState}>{children}</Children> : children}
+            {isPristine ? 'Row' : parent && parent.state ? <Children state={parent.state} setState={parent.setState} handleInputValue={parent.handleInputValue}>{children}</Children> : children}
           </section>
         );
       })()}

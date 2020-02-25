@@ -37,10 +37,10 @@
           type: 'TEXT',
         },
         {
-          value: '',
+          value: [],
           label: 'Value',
           key: 'text',
-          type: 'TEXT',
+          type: 'VARIABLE',
         },
         {
           type: 'TOGGLE',
