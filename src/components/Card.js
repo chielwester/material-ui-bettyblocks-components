@@ -14,7 +14,7 @@
     const isDev = B.env === 'dev';
     const card = (
       <Card variant={variant} raised={raised}>
-        <CardHeader title={title} subheader={subTitle} />
+        {title.length || subTitle.length ? <CardHeader title={title} subheader={subTitle} /> : '' }
         <CardContent>
           {!children.length & isDev ? 'Card' : children}
         </CardContent>
