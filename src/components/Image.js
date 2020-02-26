@@ -5,8 +5,10 @@
   type: 'IMAGE',
   allowedTypes: [],
   orientation: 'VERTICAL',
-  jsx: (
-    <figure
+  jsx: (() => {
+    const {env, useText} = B;
+
+    return (<figure
       className={[classes.figure, !options.imgUrl ? classes.empty : ''].join(
         ' ',
       )}
@@ -14,7 +16,7 @@
       {options.imgUrl ? (
         <img
           className={classes.image}
-          src={options.imgUrl}
+          src={env === 'dev' ? options.imgUrl : useText(options.imgUrl)}
           alt={options.imgAlt ? options.imgAlt : ' '}
           height="auto"
           width={options.width}
@@ -27,8 +29,8 @@
           </svg>
         </div>
       )}
-    </figure>
-  ),
+    </figure>)
+  })(),
   styles: B => t => {
     const style = new B.Styling(t);
     const getSpacing = (idx, device = 'Mobile') =>
