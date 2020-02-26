@@ -14,7 +14,7 @@
         </Link>
       ) : (
         <Link color={color} component={B.Link} endpoint={options.linkTo}>
-          {options.linkText}
+          <B.Text value={options.linkText} />
         </Link>
       );
     return isDev ? <div>{button}</div> : button;

@@ -35,6 +35,10 @@
       } = event;
 
       if (actionInput) {
+        parent.setState({
+          ...parent.state,
+          [actionInput.name]: eventValue,
+        });
         parent.handleInputValue({name: actionInput.name, value: eventValue});
       } else {
         setCurrentValue(eventValue);

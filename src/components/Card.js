@@ -18,7 +18,7 @@
         <CardContent>
           {!children.length & isDev ? 'Card' : children}
         </CardContent>
-        <CardActions disableSpacing></CardActions>
+
       </Card>
     );
     return isDev ? <div>{card}</div> : card;

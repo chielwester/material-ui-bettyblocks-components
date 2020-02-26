@@ -7,6 +7,7 @@
     const { Typography } = window.MaterialUI.Core;
     const { variant, text, gutterBottom, display, align, color } = options;
     const isDev = B.env === 'dev';
+
     const typography = (
       <Typography
         align={align}

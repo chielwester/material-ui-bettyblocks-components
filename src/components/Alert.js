@@ -6,7 +6,6 @@
   jsx: (() => {
     const { Alert } = window.MaterialUI.Lab;
     const { severity, variant, message } = options;
-    // const isDev = B.env === 'dev';
 
     return (
       <div className={classes.root}>

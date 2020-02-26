@@ -42,6 +42,7 @@
     'FILE_INPUT',
     'IMAGE_INPUT',
     'SUBMIT_BUTTON',
+    'DATACONTAINER'
   ],
   orientation: 'VERTICAL',
   jsx: (() => {

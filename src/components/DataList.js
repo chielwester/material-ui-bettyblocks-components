@@ -22,6 +22,7 @@
     'COLUMN',
     'CONTAINER_COMPONENT',
     'CONTENT_COMPONENT',
+    'BOX'
   ],
   orientation: 'HORIZONTAL',
   jsx: (
