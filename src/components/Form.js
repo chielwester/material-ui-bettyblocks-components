@@ -40,11 +40,11 @@
     const ref = React.createRef();
     const [formState, setFormState] = useState({});
 
-    const handleInputValue = ({name, value}) => {
+    const handleInputValue = ({ name, value }) => {
       setFormState(prev => {
-        return ({...prev, [name]: value});
+        return { ...prev, [name]: value };
       });
-    }
+    };
 
     const buildFilter = ([lhs, operator, rhs]) => {
       if (!lhs || !rhs) {
@@ -125,103 +125,122 @@
           }}
         </B.GetAll>
       );
-    }
-
-    const Form = () => {
-      return (<Action actionId={actionId}>
-        {(callAction, { data, loading, error }) => {
-          if(data) {
-            const response_data = data.actionb5;
-            if(response_data.redirect) {
-              window.location.hash = response_data.redirect;
-            }
-          }
-          return (<form
-            onSubmit={event => {
-              event.preventDefault();
-              callAction({
-                variables: { input: formState },
-              });
-            }}
-            className={classes.form}
-            noValidate
-            autoComplete={false}
-            ref={ref}
-          >
-            <div
-              className={[
-                showPlaceholder ? classes.empty : '',
-                isPristine ? classes.pristine : '',
-              ].join(' ')}
-            >
-              {isPristine ? (
-                'Form'
-              ) : (
-                <Children state={state} setState={setState} loading={loading} handleInputValue={handleInputValue}>
-                  {children}
-                </Children>
-              )}
-            </div>
-          </form>)
-        }}
-      </Action>)
     };
 
-    const form = (<Action actionId={actionId}>
+    const Form = () => {
+      return (
+        <Action actionId={actionId}>
+          {(callAction, { data, loading, error }) => {
+            if (data) {
+              const response_data = data.actionb5;
+              if (response_data.redirect) {
+                window.location.hash = response_data.redirect;
+              }
+            }
+            return (
+              <form
+                onSubmit={event => {
+                  event.preventDefault();
+                  callAction({
+                    variables: { input: formState },
+                  });
+                }}
+                className={classes.form}
+                noValidate
+                autoComplete={false}
+                ref={ref}
+              >
+                <div
+                  className={[
+                    showPlaceholder ? classes.empty : '',
+                    isPristine ? classes.pristine : '',
+                  ].join(' ')}
+                >
+                  {isPristine ? (
+                    'Form'
+                  ) : (
+                    <Children
+                      state={state}
+                      setState={setState}
+                      loading={loading}
+                      handleInputValue={handleInputValue}
+                    >
+                      {children}
+                    </Children>
+                  )}
+                </div>
+              </form>
+            );
+          }}
+        </Action>
+      );
+    };
+
+    const form = (
+      <Action actionId={actionId}>
         {(callAction, { data, loading, error }) => {
-          if(data) {
+          if (data) {
             const response_data = data.actionb5;
-            if(response_data.redirect) {
+            if (response_data.redirect) {
               window.location.hash = response_data.redirect;
             }
           }
-          return (<form
-            onSubmit={event => {
-              event.preventDefault();
-              callAction({
-                variables: { input: formState },
-              });
-            }}
-            className={classes.form}
-            noValidate
-            autoComplete={false}
-            ref={ref}
-          >
-            <div
-              className={[
-                showPlaceholder ? classes.empty : '',
-                isPristine ? classes.pristine : '',
-              ].join(' ')}
+          return (
+            <form
+              onSubmit={event => {
+                event.preventDefault();
+                callAction({
+                  variables: { input: formState },
+                });
+              }}
+              className={classes.form}
+              noValidate
+              autoComplete={false}
+              ref={ref}
             >
-              {isPristine ? (
-                'Form'
-              ) : (
-                <Children state={state} setState={setState} loading={loading} handleInputValue={handleInputValue}>
-                  {children}
-                </Children>
-              )}
-            </div>
-          </form>)
+              <div
+                className={[
+                  showPlaceholder ? classes.empty : '',
+                  isPristine ? classes.pristine : '',
+                ].join(' ')}
+              >
+                {isPristine ? (
+                  'Form'
+                ) : (
+                  <Children
+                    state={state}
+                    setState={setState}
+                    loading={loading}
+                    handleInputValue={handleInputValue}
+                  >
+                    {children}
+                  </Children>
+                )}
+              </div>
+            </form>
+          );
         }}
-      </Action>)
+      </Action>
+    );
 
-      if(isDev) {
-        return <div>{form}</div>;
-      }
+    if (isDev) {
+      return <div>{form}</div>;
+    }
 
-      if(options.model) {
-        const where = buildFilter(options.filter);
-        const variables = Object.assign(
-          {
-            skip: 0,
-            take: 1,
-          },
-          Object.keys(where).length !== 0 && {
-            where,
-          },
-        );
+    if (options.model) {
+      const where = buildFilter(options.filter);
+      const variables = Object.assign(
+        {
+          skip: 0,
+          take: 1,
+        },
+        Object.keys(where).length !== 0 && {
+          where,
+        },
+      );
 
-        return (        <B.GetAll
+      return (
+        <B.GetAll
           modelId={options.model}
           __SECRET_VARIABLES_DO_NOT_USE={variables}
         >
@@ -242,12 +261,10 @@
             );
           }}
         </B.GetAll>
-)
-      }
+      );
+    }
 
-      return form;
-
-
+    return form;
   })(),
 
   styles: () => () => ({
