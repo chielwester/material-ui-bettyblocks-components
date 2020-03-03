@@ -1,6 +1,5 @@
 (() => ({
   name: 'SelectInput',
-  category: 'FORM',
   type: 'TEXT_INPUT',
   allowedTypes: [],
   orientation: 'HORIZONTAL',

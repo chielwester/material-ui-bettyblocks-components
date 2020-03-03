@@ -1,6 +1,5 @@
 (() => ({
   name: 'Checkbox',
-  category: 'FORM',
   type: 'CHECKBOX',
   allowedTypes: [],
   orientation: 'HORIZONTAL',

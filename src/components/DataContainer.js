@@ -1,7 +1,6 @@
 (() => ({
   name: 'DataContainer',
   icon: 'DataContainer',
-  category: 'CONTENT',
   type: 'DATACONTAINER',
   allowedTypes: [
     'ACCORDION',

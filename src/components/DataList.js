@@ -1,7 +1,6 @@
 (() => ({
   name: 'DataList',
   icon: 'DataList',
-  category: 'CONTENT',
   type: 'DATALIST',
   allowedTypes: [
     'ACCORDION',

@@ -1,6 +1,5 @@
 (() => ({
   name: 'AutoComplete',
-  category: 'FORM',
   type: 'AUTO_COMPLETE',
   allowedTypes: [],
   orientation: 'HORIZONTAL',

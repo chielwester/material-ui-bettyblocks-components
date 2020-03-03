@@ -1,7 +1,6 @@
 (() => ({
   name: 'Image',
   icon: 'ImageIcon',
-  category: 'CONTENT',
   type: 'IMAGE',
   allowedTypes: [],
   orientation: 'VERTICAL',

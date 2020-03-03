@@ -1,6 +1,5 @@
 (() => ({
   name: 'RadioGroupInput',
-  category: 'FORM',
   type: 'TEXT_INPUT',
   allowedTypes: [],
   orientation: 'HORIZONTAL',

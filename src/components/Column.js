@@ -1,7 +1,6 @@
 (() => ({
   name: 'Column',
   icon: 'ColumnIcon',
-  category: 'LAYOUT',
   type: 'COLUMN',
   allowedTypes: [
     'ACCORDION',

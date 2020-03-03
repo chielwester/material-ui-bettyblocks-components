@@ -1,6 +1,5 @@
 (() => ({
   name: 'Form',
-  category: 'FORM',
   type: 'FORM',
   allowedTypes: [
     'AUTO_COMPLETE',
