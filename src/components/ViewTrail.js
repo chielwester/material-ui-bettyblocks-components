@@ -1,7 +1,7 @@
 (() => ({
   name: 'ViewTrail',
   type: 'ROW',
-  allowedTypes: ['PANEL'],
+  allowedTypes: ['PANE'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const SPACER = 100;
@@ -24,20 +24,20 @@
             ? child.props.options
               ? wrap
                 ? `minmax(calc(100% - ${(children.length - 1) * SPACER}px), ${
-                    child.props.options.width
+                    child.props.options.width || 0
                   }px)`
                 : `minmax(${
-                    child.props.options.width
+                    child.props.options.width || 0
                   }px, calc(100% - ${(children.length - 1) * SPACER}px))`
               : '1fr'
             : `minmax(${SPACER}px, ${
-                child.props.options ? child.props.options.width + 'px' : '1fr'
+                child.props.options ? (child.props.options.width || 0) + 'px' : '1fr'
               })`;
         })
         .join(' ');
 
     return (
-      <div>
+      <div className="view-trail">
         <div
           ref={measuredRef}
           className={classes.root}
@@ -46,7 +46,7 @@
           }}
         >
           <B.Children activePanel={activePanel} setActivePanel={setActivePanel}>
-            {children}
+            {children.length ? children : <span>Empty view trail</span>}
           </B.Children>
         </div>
       </div>

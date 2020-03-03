@@ -22,6 +22,22 @@
             ],
           },
         },
+        {
+          label: 'Variant',
+          key: 'variant',
+          value: 'permanent',
+          type: 'CUSTOM',
+          configuration: {
+            as: 'BUTTONGROUP',
+            dataType: 'string',
+            allowedInput: [
+              { name: 'Permanent', value: 'permanent' },
+              { name: 'Persistent', value: 'persistent' },
+              { name: 'Temporary', value: 'temporary' },
+            ],
+          },
+        },
+        { label: 'Open', key: 'open', value: true, type: 'TOGGLE' },
       ],
       descendants: [],
     },

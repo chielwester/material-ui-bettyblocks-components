@@ -33,13 +33,16 @@
   orientation: 'VERTICAL',
   jsx: (() => {
     const { Drawer } = window.MaterialUI.Core;
-    const { anchor } = options;
+    const { anchor, variant, open } = options;
     const isDev = B.env === 'dev';
     const drawer = (
       <Drawer
-        variant="permanent"
+        variant={variant}
         anchor={anchor}
-        className={[classes.drawer, isDev ? classes.dev : ''].join(' ')}
+        open={open}
+        className={['drawer', classes.drawer, isDev ? classes.dev : ''].join(
+          ' ',
+        )}
       >
         {children.length ? children : 'Drawer'}
       </Drawer>

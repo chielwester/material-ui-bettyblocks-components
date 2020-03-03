@@ -109,6 +109,10 @@
       },
     );
 
+    if (!options.model) {
+      return <div>Please select a model</div>;
+    }
+
     return (
       <div className={classes.root}>
         <GetAll
