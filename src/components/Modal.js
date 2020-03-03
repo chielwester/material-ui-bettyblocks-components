@@ -13,7 +13,7 @@
       <div className={[isPristine ? classes.pristine : ''].join(' ')}>
         {open ? null : (
           <button type="button" onClick={() => setOpen(true)}>
-            Open Modal
+            {options.buttontext}
           </button>
         )}
 

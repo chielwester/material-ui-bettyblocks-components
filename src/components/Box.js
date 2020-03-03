@@ -28,6 +28,8 @@
     'DROPZONE',
     'LINK',
     'SWITCH',
+    'DATALIST',
+    'DATACONTAINER'
   ],
   orientation: 'HORIZONTAL',
   jsx: (() => {

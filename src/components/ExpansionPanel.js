@@ -13,14 +13,15 @@
     const { ExpandMore } = window.MaterialUI.Icons;
     const { handleChange, expanded } = parent || {};
     const { summary, details } = options;
-    const isDev = B.env === 'dev';
+    const { useText, env } = B;
+    const isDev = env === 'dev';
     const panel = (
       <ExpansionPanel
         expanded={isDev || expanded === index}
         onChange={handleChange(index)}
       >
         <ExpansionPanelSummary expandIcon={<ExpandMore />}>
-          <Typography>{summary}</Typography>
+          <Typography>{isDev ? JSON.stringify(summary): useText(summary)}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>{children}</ExpansionPanelDetails>
       </ExpansionPanel>

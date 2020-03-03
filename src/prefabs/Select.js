@@ -25,10 +25,10 @@
           type: 'ACTION_INPUT',
         },
         {
-          value: '',
+          value: [],
           label: 'Value',
           key: 'text',
-          type: 'TEXT',
+          type: 'VARIABLE',
         },
         {
           label: 'Option type',
@@ -63,6 +63,21 @@
           label: 'Property',
           key: 'property',
           value: '',
+          configuration: {
+            dependsOn: 'model',
+            condition: {
+              type: 'SHOW',
+              option: 'optionType',
+              comparator: 'EQ',
+              value: 'data',
+            },
+          },
+        },
+        {
+          value: '',
+          label: 'Value property',
+          key: 'valueproperty',
+          type: 'PROPERTY',
           configuration: {
             dependsOn: 'model',
             condition: {

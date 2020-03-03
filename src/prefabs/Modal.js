@@ -12,6 +12,12 @@
           key: 'open',
           value: true,
         },
+        {
+          type: 'TEXT',
+          value: 'Open Modal',
+          key: 'buttontext',
+          label: 'Button Text'
+        }
       ],
       descendants: [
         {

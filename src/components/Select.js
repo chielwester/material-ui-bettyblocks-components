@@ -27,10 +27,14 @@
     const isDev = B.env === 'dev';
     const { GetAll, getProperty, getActionInput } = B;
     const actionInput = getActionInput(actionInputId);
-    const [currentValue, setCurrentValue] = useState();
+    const [currentValue, setCurrentValue] = useState(text);
     const value = actionInput ? parent.state[actionInput.name] : currentValue;
     const { TextField, MenuItem } = window.MaterialUI.Core;
     const labelProperty = getProperty(property);
+
+    const valueProp = options.valueproperty
+      ? getProperty(options.valueproperty) && getProperty(options.valueproperty)
+      : null;
 
 		const handleChange = (event) => {
       const { target: {value: eventValue }} = event;
@@ -41,6 +45,7 @@
           ...parent.state,
           [actionInput.name]: eventValue
         });
+        parent.handleInputValue({name: actionInput.name, value: eventValue});
       } else {
         setCurrentValue(eventValue);
       }
@@ -55,7 +60,8 @@
       optionType === 'static' ? (
         <TextField
           select
-          value={value}
+          defaultValue={1}
+          value={1}
           size={size}
           variant={variant}
           fullWidth={fullWidth}
@@ -89,6 +95,7 @@
             return (
               <TextField
                 select
+                defaultValue={value}
                 value={value}
                 size={size}
                 variant={variant}
@@ -103,7 +110,7 @@
                 helperText={helperText}
               >
                 {results.map(item => (
-                  <MenuItem key={item.id} value={item.id}>
+                  <MenuItem key={item.id} value={item[valueProp.name]}>
                     {item[labelProperty.name]}
                   </MenuItem>
                 ))}
