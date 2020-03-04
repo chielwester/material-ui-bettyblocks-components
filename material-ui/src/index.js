@@ -7,6 +7,10 @@ import { useDropzone } from 'react-dropzone';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import {
+  Cancel,
+  Close,
+  Save,
+  Delete,
   ExpandMore,
   FilterList,
   Search,
@@ -21,6 +25,17 @@ window.MaterialUI = {
   DateFnsUtils,
   Pickers,
   Styles: { ThemeProvider, createMuiTheme },
-  Icons: { ExpandMore, FilterList, Search, FileCopy, Email, GetApp },
+  Icons: {
+    Cancel,
+    Close,
+    Save,
+    Delete,
+    ExpandMore,
+    FilterList,
+    Search,
+    FileCopy,
+    Email,
+    GetApp,
+  },
   useDropzone,
 };
