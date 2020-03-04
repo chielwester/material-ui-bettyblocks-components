@@ -28,84 +28,20 @@
     const [take, setTake] = useState(10);
     const [records, setRecords] = useState(isDev ? [{}] : []);
     const [totalCount, setTotalCount] = useState(0);
-    const [order, setOrder] = useState('asc');
+    const [order, setOrder] = useState('');
     const [orderBy, setOrderBy] = useState('');
     const [page, setPage] = useState(0);
     const [searching, setSearching] = useState(false);
     const [searchParam, setSearchParam] = useState('');
-    const { title, searchProperty } = options;
+    const { title, searchProperty, filter } = options;
     const searchProp = getProperty(searchProperty);
 
-    /* ####### Filters ####### */
-
-    function buildFilter(where, [lhs, operator, rhs]) {
-      if (!lhs || !rhs) {
-        return null;
-      }
-
-      const lhsProperty = getProperty(lhs);
-
-      if (!lhsProperty) {
-        return null;
-      }
-
-      const { name: propertyName, kind } = lhsProperty;
-
-      const getRawValue = (opts, value) =>
-        opts.includes(kind) ? parseInt(value, 10) : value;
-
-      const getInputVariableValue = value => {
-        const variable = B.getVariable(value.id);
-        if (variable) {
-          //  eslint-disable-next-line no-undef
-          const params = useParams();
-
-          return variable.kind === 'integer'
-            ? parseInt(params[variable.name], 10)
-            : params[variable.name];
-        }
-
-        return null;
-      };
-
-      const isInputVariable = value =>
-        value && value[0] && value[0].type === 'INPUT';
-
-      const rhsValue = isInputVariable(rhs)
-        ? getInputVariableValue(rhs[0])
-        : getRawValue(['serial', 'integer'], rhs[0]);
-
-      return {
-        [propertyName]: {
-          [operator]: rhsValue,
-        },
-      };
-    }
-
-    let where = {};
-
-    const filter = buildFilter(where, options.filter);
-
-    if (filter !== null) {
-      where = filter;
-    }
-
-    if (searchProp && searchParam !== '') {
-      where[searchProp.name] = {
-        ...(where[searchProp.name] ? where[searchProp.name] : {}),
-        regex: searchParam,
-      };
-    }
-
     const variables = Object.assign(
-      orderBy && {
+      order && {
         sort: {
           field: orderBy,
           order: order.toUpperCase(),
         },
-      },
-      Object.keys(where).length !== 0 && {
-        where,
       },
     );
 
@@ -113,6 +49,11 @@
       <div className={classes.root}>
         <GetAll
           modelId={options.model}
+          filter={
+            searchProp && searchParam !== ''
+              ? { ...filter, [searchProp.id]: { matches: searchParam } }
+              : filter
+          }
           __SECRET_VARIABLES_DO_NOT_USE={variables}
           skip={page ? page * take : 0}
           take={take}
@@ -125,10 +66,13 @@
             return (
               <>
                 <Toolbar>
-                  <Typography className={classes.toolbarTitle} variant="h6">
-                    {title}
-                  </Typography>
-                  {searchProperty && options.filter ? (
+                  {title ? (
+                    <Typography className={classes.toolbarTitle} variant="h6">
+                      {title}
+                    </Typography>
+                  ) : null}
+
+                  {searchProperty ? (
                     <>
                       {searching ? (
                         <TextField
