@@ -31,7 +31,7 @@
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const isDev = B.env === 'dev';
-    const { Children, Action } = B;
+    const { Children, Action, GetOneProvider, useText } = B;
     const [state, setState] = useState({});
     const { actionId } = options;
     const showPlaceholder = children.length === 0;
@@ -43,136 +43,6 @@
       setFormState(prev => {
         return { ...prev, [name]: value };
       });
-    };
-
-    const buildFilter = ([lhs, operator, rhs]) => {
-      if (!lhs || !rhs) {
-        return {};
-      }
-
-      const lhsProperty = B.getProperty(lhs);
-
-      if (!lhsProperty) {
-        return {};
-      }
-
-      const { name: propertyName, kind } = lhsProperty;
-
-      const getRawValue = (opts, value) =>
-        opts.includes(kind) ? parseInt(value, 10) : value;
-
-      const getInputVariableValue = value => {
-        const variable = B.getVariable(value.id);
-        if (variable) {
-          // eslint-disable-next-line no-undef
-          const params = useParams();
-
-          return variable.kind === 'integer'
-            ? parseInt(params[variable.name], 10)
-            : params[variable.name];
-        }
-
-        return null;
-      };
-
-      const isInputVariable = value =>
-        value && value[0] && value[0].type === 'INPUT';
-
-      const rhsValue = isInputVariable(rhs)
-        ? getInputVariableValue(rhs[0])
-        : getRawValue(['serial', 'integer'], rhs[0]);
-
-      return {
-        [propertyName]: {
-          [operator]: rhsValue,
-        },
-      };
-    };
-
-    const WithData = () => {
-      const where = buildFilter(options.filter);
-      const variables = Object.assign(
-        {
-          skip: 0,
-          take: 1,
-        },
-        Object.keys(where).length !== 0 && {
-          where,
-        },
-      );
-
-      return (
-        <B.GetAll
-          modelId={options.model}
-          __SECRET_VARIABLES_DO_NOT_USE={variables}
-        >
-          {({ loading, error, data }) => {
-            if (loading) return 'loading...';
-            if (error) return 'failed';
-
-            const item = data.results[0];
-
-            return (
-              <>
-                {item && (
-                  <B.GetOneProvider key={item.id} value={item}>
-                    {form}
-                  </B.GetOneProvider>
-                )}
-              </>
-            );
-          }}
-        </B.GetAll>
-      );
-    };
-
-    const Form = () => {
-      return (
-        <Action actionId={actionId}>
-          {(callAction, { data, loading, error }) => {
-            if (data) {
-              const response_data = data.actionb5;
-              if (response_data.redirect) {
-                window.location.hash = response_data.redirect;
-              }
-            }
-            return (
-              <form
-                onSubmit={event => {
-                  event.preventDefault();
-                  callAction({
-                    variables: { input: formState },
-                  });
-                }}
-                className={classes.form}
-                noValidate
-                autoComplete={false}
-                ref={ref}
-              >
-                <div
-                  className={[
-                    showPlaceholder ? classes.empty : '',
-                    isPristine ? classes.pristine : '',
-                  ].join(' ')}
-                >
-                  {isPristine ? (
-                    'Form'
-                  ) : (
-                    <Children
-                      state={state}
-                      setState={setState}
-                      loading={loading}
-                      handleInputValue={handleInputValue}
-                    >
-                      {children}
-                    </Children>
-                  )}
-                </div>
-              </form>
-            );
-          }}
-        </Action>
-      );
     };
 
     const form = (
@@ -192,7 +62,6 @@
                   variables: { input: formState },
                 });
               }}
-              className={classes.form}
               noValidate
               autoComplete={false}
               ref={ref}
@@ -222,48 +91,26 @@
       </Action>
     );
 
-    if (isDev) {
-      return <div>{form}</div>;
-    }
+    const withData = options.model ? (
+      <B.GetOne modelId={options.model} filter={options.filter}>
+        {({ loading, error, data }) => {
+          if (loading) return 'loading...';
+          if (error) return 'failed';
 
-    if (options.model) {
-      const where = buildFilter(options.filter);
-      const variables = Object.assign(
-        {
-          skip: 0,
-          take: 1,
-        },
-        Object.keys(where).length !== 0 && {
-          where,
-        },
-      );
+          return Object.keys(data).length ? (
+            <GetOneProvider key={data.id} value={data}>
+              {form}
+            </GetOneProvider>
+          ) : (
+            'Record not found'
+          );
+        }}
+      </B.GetOne>
+    ) : (
+      form
+    );
 
-      return (
-        <B.GetAll
-          modelId={options.model}
-          __SECRET_VARIABLES_DO_NOT_USE={variables}
-        >
-          {({ loading, error, data }) => {
-            if (loading) return 'loading...';
-            if (error) return 'failed';
-
-            const item = data.results[0];
-
-            return (
-              <>
-                {item && (
-                  <B.GetOneProvider key={item.id} value={item}>
-                    {form}
-                  </B.GetOneProvider>
-                )}
-              </>
-            );
-          }}
-        </B.GetAll>
-      );
-    }
-
-    return form;
+    return <div>{isDev ? form : withData}</div>;
   })(),
 
   styles: () => () => ({

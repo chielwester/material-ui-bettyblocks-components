@@ -22,13 +22,10 @@
           type: 'MODEL',
         },
         {
-          value: ['', 'eq', ''],
+          value: '',
           label: 'Filter',
           key: 'filter',
           type: 'FILTER',
-          configuration: {
-            dependsOn: 'model',
-          },
         },
       ],
 
