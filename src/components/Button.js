@@ -1,5 +1,7 @@
 (() => ({
   name: 'Button',
+  icon: 'ButtonIcon',
+  category: 'CONTENT',
   type: 'BUTTON',
   allowedTypes: [],
   orientation: 'VERTICAL',
@@ -9,14 +11,17 @@
     const {
       linkType,
       color,
+      linkTo,
       linkToExternal,
       variant,
       size,
       startIcon,
+      buttonText,
     } = options;
     const isDev = B.env === 'dev';
-    const button =
-      linkType === 'External' ? (
+    let button;
+    if (linkType === 'External' && linkToExternal !== '') {
+      button = (
         <Button
           variant={variant}
           color={color}
@@ -26,23 +31,40 @@
             startIcon !== 'None' ? React.createElement(Icons[startIcon]) : null
           }
         >
-          {options.buttonText}
+          {buttonText}
         </Button>
-      ) : (
+      );
+    } else if (linkType === 'Internal' && linkTo !== '') {
+      button = (
         <Button
           variant={variant}
           color={color}
           component={B.Link}
-          endpoint={options.linkTo}
+          endpoint={linkTo}
           size={size}
           startIcon={
             startIcon !== 'None' ? React.createElement(Icons[startIcon]) : null
           }
         >
-          {options.buttonText}
+          {buttonText}
         </Button>
       );
-    return isDev ? <div> {button} </div> : button;
+    } else {
+      button = (
+        <Button
+          variant={variant}
+          color={color}
+          size={size}
+          startIcon={
+            startIcon !== 'None' ? React.createElement(Icons[startIcon]) : null
+          }
+        >
+          {buttonText}
+        </Button>
+      );
+    }
+
+    return isDev ? <div>{button}</div> : button;
   })(),
   styles: () => () => ({
     root: {
