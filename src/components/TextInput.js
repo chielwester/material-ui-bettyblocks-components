@@ -9,6 +9,7 @@
       formComponentName,
       required,
       disabled,
+      readOnly,
       multiline,
       placeholder,
       text,
@@ -24,8 +25,12 @@
     const isDev = B.env === 'dev';
     const { getActionInput, useText } = B;
     const actionInput = getActionInput(actionInputId);
-    const [currentValue, setCurrentValue] = B.env === 'dev' ? useState(text.join(' ')) : useState(useText(text));
-    const value = actionInput && parent.state[actionInput.name] ? parent.state[actionInput.name] : currentValue;
+    const [currentValue, setCurrentValue] =
+      B.env === 'dev' ? useState(text.join(' ')) : useState(useText(text));
+    const value =
+      actionInput && parent.state[actionInput.name]
+        ? parent.state[actionInput.name]
+        : currentValue;
 
     const { TextField } = window.MaterialUI.Core;
     const handleChange = event => {
@@ -38,7 +43,7 @@
           ...parent.state,
           [actionInput.name]: eventValue,
         });
-        parent.handleInputValue({name: actionInput.name, value: eventValue});
+        parent.handleInputValue({ name: actionInput.name, value: eventValue });
       } else {
         setCurrentValue(eventValue);
       }
@@ -52,22 +57,35 @@
     };
 
     useEffect(() => {
-      if(actionInput && currentValue && currentValue != parent.state[actionInput.name]) {
-        parent.handleInputValue({name: actionInput.name, value: currentValue});
+      if (
+        actionInput &&
+        currentValue &&
+        currentValue != parent.state[actionInput.name]
+      ) {
+        parent.handleInputValue({
+          name: actionInput.name,
+          value: currentValue,
+        });
       }
     }, []);
 
     const textField = (
       <TextField
         name={formComponentName}
-        value={B.env === 'dev' ? text.map(textitem => textitem.name ? textitem.name : textitem).join(' ') : value}
+        value={
+          B.env === 'dev'
+            ? text
+                .map(textitem => (textitem.name ? textitem.name : textitem))
+                .join(' ')
+            : value
+        }
         size={size}
         variant={variant}
         placeholder={placeholder}
         fullWidth={fullWidth}
         type={type}
         onChange={handleChange}
-        inputProps={{ formComponentName }}
+        inputProps={{ formComponentName, readOnly }}
         required={required}
         disabled={disabled}
         multiline={multiline}

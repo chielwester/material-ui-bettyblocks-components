@@ -55,6 +55,12 @@
           value: false,
         },
         {
+          type: 'TOGGLE',
+          label: 'Readonly',
+          key: 'readOnly',
+          value: false,
+        },
+        {
           value: false,
           label: 'Required',
           key: 'required',
