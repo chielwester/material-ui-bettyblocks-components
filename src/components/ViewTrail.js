@@ -1,19 +1,30 @@
 (() => ({
   name: 'ViewTrail',
-  type: 'ROW',
+  type: 'VIEW_TRAIL',
   allowedTypes: ['PANE'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const SPACER = 100;
     const isDev = B.env === 'dev';
-    const parts = isDev
-      ? children
-      : useLocation()
-          .pathname.split('/')
-          .filter(p => !p.startsWith(':') && p !== '0' && p !== '');
 
-    const openChildren = children.slice(0, parts.length);
-    const [activePanel, setActivePanel] = useState(openChildren - 1);
+    const [openChildren, setOpenChildren] = useState(children);
+    const location = isDev ? null : useLocation();
+
+    useEffect(() => {
+      const parts = isDev
+        ? children
+        : location.pathname
+            .split('/')
+            .filter(p => !p.startsWith(':') && p !== '0' && p !== '');
+
+      setOpenChildren(children.slice(0, parts.length));
+    }, [isDev ? null : location]);
+
+    const [activePanel, setActivePanel] = useState();
+
+    useEffect(() => {
+      setActivePanel(openChildren.length - 1);
+    }, [openChildren]);
 
     const [domWidth, setWidth] = useState(0);
     const measuredRef = useCallback(node => {
@@ -56,11 +67,7 @@
             gridTemplateColumns: gridTemplateColumns(activePanel),
           }}
         >
-          <B.Children
-            activePanel={activePanel}
-            setActivePanel={setActivePanel}
-            // togglePanel={togglePanel}
-          >
+          <B.Children activePanel={activePanel} setActivePanel={setActivePanel}>
             {children.length ? openChildren : <span>Empty view trail</span>}
           </B.Children>
         </div>

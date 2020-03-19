@@ -115,6 +115,12 @@
                   value: '',
                 },
                 {
+                  type: 'TOGGLE',
+                  label: 'Hoverable',
+                  key: 'hoverable',
+                  value: false,
+                },
+                {
                   value: '',
                   label: 'Filter',
                   key: 'filter',

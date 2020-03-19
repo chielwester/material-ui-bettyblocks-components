@@ -11,7 +11,13 @@
     };
     const isDev = B.env === 'dev';
     const tabs = (
-      <Tabs value={value} onChange={handleChange} centered={options.centered}>
+      <Tabs
+        orientation={options.orientation}
+        value={value}
+        selected={0}
+        onChange={handleChange}
+        centered={options.centered}
+      >
         {children}
       </Tabs>
     );

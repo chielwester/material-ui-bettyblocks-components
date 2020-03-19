@@ -12,6 +12,26 @@
           value: true,
           type: 'TOGGLE',
         },
+        {
+          label: 'Orientation',
+          key: 'orientation',
+          value: 'horizontal',
+          type: 'CUSTOM',
+          configuration: {
+            as: 'BUTTONGROUP',
+            dataType: 'string',
+            allowedInput: [
+              {
+                name: 'Horizontal',
+                value: 'horizontal',
+              },
+              {
+                name: 'Vertical',
+                value: 'vertical',
+              },
+            ],
+          },
+        },
       ],
       descendants: [
         {

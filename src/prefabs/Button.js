@@ -77,6 +77,30 @@
           },
         },
         {
+          type: 'CUSTOM',
+          label: 'type',
+          key: 'type',
+          value: 'button',
+          configuration: {
+            as: 'BUTTONGROUP',
+            dataType: 'string',
+            allowedInput: [
+              {
+                name: 'Submit',
+                value: 'submit',
+              },
+              {
+                name: 'Reset',
+                value: 'reset',
+              },
+              {
+                name: 'Button',
+                value: 'button',
+              },
+            ],
+          },
+        },
+        {
           label: 'Color',
           key: 'color',
           value: 'default',

@@ -5,100 +5,56 @@
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const {
-      label,
-      formComponentName,
-      required,
-      disabled,
-      readOnly,
-      multiline,
-      placeholder,
       text,
-      variant,
-      type,
-      size,
-      fullWidth,
-      error,
-      margin,
-      helperText,
+      formComponentType,
       actionInputId,
+      handleChange,
+      ...otherOptions
     } = options;
+
     const isDev = B.env === 'dev';
     const { getActionInput, useText } = B;
+    const { TextField, InputAdornment } = window.MaterialUI.Core;
+    const [currentValue, setCurrentValue] = isDev
+      ? useState(text.join(' '))
+      : useState(useText(text));
     const actionInput = getActionInput(actionInputId);
-    const [currentValue, setCurrentValue] =
-      B.env === 'dev' ? useState(text.join(' ')) : useState(useText(text));
     const value =
       actionInput && parent.state[actionInput.name]
         ? parent.state[actionInput.name]
         : currentValue;
-
-    const { TextField } = window.MaterialUI.Core;
-    const handleChange = event => {
-      const {
-        target: { value: eventValue },
-      } = event;
-
-      if (actionInput) {
-        parent.setState({
-          ...parent.state,
-          [actionInput.name]: eventValue,
-        });
-        parent.handleInputValue({ name: actionInput.name, value: eventValue });
-      } else {
-        setCurrentValue(eventValue);
-      }
-
-      if (options.handleValueChange) {
-        options.handleValueChange({
-          name: formComponentName,
-          value: event.target.value,
-        });
-      }
-    };
-
-    useEffect(() => {
-      if (
-        actionInput &&
-        currentValue &&
-        currentValue != parent.state[actionInput.name]
-      ) {
-        parent.handleInputValue({
-          name: actionInput.name,
-          value: currentValue,
-        });
-      }
-    }, []);
-
     const textField = (
       <TextField
-        name={formComponentName}
+        type={formComponentType}
         value={
-          B.env === 'dev'
+          isDev
             ? text
                 .map(textitem => (textitem.name ? textitem.name : textitem))
                 .join(' ')
             : value
         }
-        size={size}
-        variant={variant}
-        placeholder={placeholder}
-        fullWidth={fullWidth}
-        type={type}
-        onChange={handleChange}
-        inputProps={{ formComponentName, readOnly }}
-        required={required}
-        disabled={disabled}
-        multiline={multiline}
-        label={label}
-        error={error}
-        margin={margin}
-        helperText={helperText}
+        onChange={event => {
+          const {
+            target: { value: eventValue },
+          } = event;
+          if (handleChange) {
+            handleChange(event);
+          }
+          if (actionInput) {
+            parent.setState({
+              ...parent.state,
+              [actionInput.name]: eventValue,
+            });
+            parent.handleInputValue({ name: actionInput.name, value: eventValue });
+          } else {
+            setCurrentValue(eventValue);
+          }
+        }}
+        {...otherOptions}
       />
     );
 
     return isDev ? <div>{textField}</div> : textField;
   })(),
-  styles: () => () => {
-    return {};
-  },
+  styles: B => t => {},
 }))();

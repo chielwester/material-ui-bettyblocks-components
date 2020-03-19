@@ -17,6 +17,7 @@
       size,
       startIcon,
       buttonText,
+      type,
     } = options;
     const isDev = B.env === 'dev';
     let button;
@@ -55,6 +56,7 @@
           variant={variant}
           color={color}
           size={size}
+          type={isDev ? 'button' : type}
           startIcon={
             startIcon !== 'None' ? React.createElement(Icons[startIcon]) : null
           }

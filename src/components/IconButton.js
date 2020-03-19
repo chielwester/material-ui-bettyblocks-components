@@ -8,7 +8,15 @@
   jsx: (() => {
     const { Icons } = window.MaterialUI;
     const { IconButton } = window.MaterialUI.Core;
-    const { linkType, color, linkTo, linkToExternal, disabled, icon } = options;
+    const {
+      linkType,
+      color,
+      linkTo,
+      linkToExternal,
+      disabled,
+      icon,
+      type,
+    } = options;
     const isDev = B.env === 'dev';
     let button;
     if (linkType === 'External' && linkToExternal !== '') {
@@ -41,6 +49,7 @@
         <IconButton
           disabled={disabled}
           color={color}
+          type={type}
           aria-label={icon}
           color={color}
         >

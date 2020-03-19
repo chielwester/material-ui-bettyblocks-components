@@ -1,11 +1,18 @@
 (() => ({
   name: 'GridPane',
   type: 'PANE',
-  allowedTypes: ['PAGE_BODY'],
+  allowedTypes: ['PAGE_BODY', 'APP_BAR'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
+    useEffect(() => {
+      B.defineFunction('SetSearch', event => {
+        console.log({event})
+      });
+    }, []);
+
     const ConditionalWrapper = ({ condition, wrapper, children }) =>
       condition ? wrapper(children) : children;
+
     const { activePanel, setActivePanel } = parent;
     const isActive = activePanel === index;
     return (

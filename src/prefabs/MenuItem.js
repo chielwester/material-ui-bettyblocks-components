@@ -1,22 +1,16 @@
 (() => ({
-  name: 'NavigationTab',
+  name: 'MenuItem',
   icon: 'ButtonIcon',
   category: 'NAVIGATION',
   structure: [
     {
-      name: 'NavigationTab',
+      name: 'MenuItem',
       options: [
         {
-          type: 'TEXT',
-          label: 'Label',
-          key: 'label',
-          value: 'New tab',
-        },
-        {
-          type: 'TOGGLE',
-          label: 'Disabled',
-          key: 'disabled',
-          value: false,
+          type: 'VARIABLE',
+          label: 'Text',
+          key: 'text',
+          value: [''],
         },
         {
           value: '',

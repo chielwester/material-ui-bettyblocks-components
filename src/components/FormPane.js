@@ -1,7 +1,7 @@
 (() => ({
   name: 'FormPane',
   type: 'PANE',
-  allowedTypes: ['PAGE_BODY'],
+  allowedTypes: ['PAGE_BODY', 'APP_BAR', 'FORM'],
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const {
@@ -30,7 +30,7 @@
     const isActive = activePanel === index;
     return (
       <div className={classes.root}>
-        <ConditionalWrapper
+        {/* <ConditionalWrapper
           condition={!isActive}
           wrapper={children => (
             <div
@@ -40,8 +40,8 @@
               {children}
             </div>
           )}
-        >
-          <Dialog
+        > */}
+          {/* <Dialog
             open={showDeleteConfirmation}
             onClose={() => closeConfirmationBox()}
           >
@@ -64,10 +64,10 @@
                 Delete
               </Button>
             </DialogActions>
-          </Dialog>
+          </Dialog> */}
 
           {children.length ? children : <span>Form panel</span>}
-        </ConditionalWrapper>
+        {/* </ConditionalWrapper> */}
       </div>
     );
   })(),

@@ -36,7 +36,6 @@
     const { actionId } = options;
     const showPlaceholder = children.length === 0;
     const isPristine = showPlaceholder && B.env === 'dev';
-    const ref = React.createRef();
     const [formState, setFormState] = useState({});
 
     const handleInputValue = ({ name, value }) => {
@@ -64,7 +63,6 @@
               }}
               noValidate
               autoComplete={false}
-              ref={ref}
             >
               <div
                 className={[

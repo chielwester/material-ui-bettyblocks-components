@@ -8,9 +8,20 @@
       options: [
         {
           value: 'text',
-          label: 'Type',
-          key: 'type',
-          type: 'TEXT',
+          label: 'Content format',
+          key: 'formComponentType',
+          type: 'CUSTOM',
+          configuration: {
+            as: 'DROPDOWN',
+            dataType: 'string',
+            allowedInput: [
+              { name: 'Text', value: 'text' },
+              { name: 'Number', value: 'number' },
+              { name: 'Password', value: 'password' },
+              { name: 'Email', value: 'email' },
+              { name: 'Hidden', value: 'hidden' },
+            ],
+          },
         },
         {
           value: '',

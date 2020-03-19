@@ -23,6 +23,7 @@
     // 'PANEL',
     'PAPER',
     'PROGRESS',
+    'ROW',
     'SNACKBAR',
     'STEPPER',
     'TABLE',

@@ -1,6 +1,6 @@
 (() => ({
   name: 'Box',
-  type: 'BOX',
+  type: 'FORM',
   allowedTypes: [
     'ACCORDION',
     'ALERT',
@@ -29,7 +29,7 @@
     'LINK',
     'SWITCH',
     'DATALIST',
-    'DATACONTAINER'
+    'DATACONTAINER',
   ],
   orientation: 'HORIZONTAL',
   jsx: (() => {
