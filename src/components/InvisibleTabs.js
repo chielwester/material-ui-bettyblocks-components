@@ -8,12 +8,16 @@
     const [indexValue, setIndexValue] = useState(0);
 
     useEffect(() => {
-      // B.defineFunction('ShowPanel0', () => {
-      //   setIndexValue(0);
-      // });
+      B.defineFunction('ShowPanel0', () => {
+        setIndexValue(0);
+      });
 
       B.defineFunction('ShowPanel1', () => {
         setIndexValue(1);
+      });
+
+      B.defineFunction('ShowPanel2', () => {
+        setIndexValue(2);
       });
     }, []);
 
