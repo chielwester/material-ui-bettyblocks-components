@@ -6,7 +6,7 @@
   jsx: (() => {
     useEffect(() => {
       B.defineFunction('SetSearch', event => {
-        console.log({event})
+        console.log({ event });
       });
     }, []);
 
@@ -14,16 +14,18 @@
       condition ? wrapper(children) : children;
 
     const { activePanel, setActivePanel } = parent;
-    const isActive = activePanel === index;
+    const isDev = B.env === 'dev';
+    const isActive = isDev || activePanel === index;
     return (
       <div className={classes.root}>
         <ConditionalWrapper
           condition={!isActive}
           wrapper={children => (
-            <div
-              onClick={() => setActivePanel(index)}
-              className={classes.overlay}
-            >
+            <div className={classes.overlay}>
+              <div
+                onClick={() => setActivePanel(index)}
+                className={classes.backdrop}
+              />
               {children}
             </div>
           )}
@@ -44,9 +46,17 @@
     },
     overlay: {
       height: '100%',
-      opacity: 0.1,
+      position: 'relative',
+    },
+    backdrop: {
       zIndex: 1,
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
       opacity: 0.6,
+      backgroundColor: 'white',
     },
   }),
 }))();

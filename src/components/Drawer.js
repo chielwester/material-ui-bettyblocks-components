@@ -3,6 +3,7 @@
   type: 'DRAWER',
   allowedTypes: [
     'ACCORDION',
+    'APP_BAR',
     'BOX',
     'BUTTON',
     'APP_BAR',

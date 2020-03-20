@@ -15,59 +15,29 @@
     const { showDeleteConfirmation } = options;
     const closeConfirmationBox = () => {};
 
-    // useEffect(() => {
-    //   B.defineFunction('LoadRecord', () => {
-    //     console.log('LOAD RECORD!');
-    //   });
-    // }, []);
-
     const ConditionalWrapper = ({ condition, wrapper, children }) =>
       condition ? wrapper(children) : children;
     const { activePanel, setActivePanel, togglePanel } = parent;
 
     // if (open === false) togglePanel(index);
-
-    const isActive = activePanel === index;
+    const isDev = B.env === 'dev';
+    const isActive = isDev || activePanel === index;
     return (
       <div className={classes.root}>
-        {/* <ConditionalWrapper
+        <ConditionalWrapper
           condition={!isActive}
           wrapper={children => (
-            <div
-              onClick={() => setActivePanel(index)}
-              className={classes.overlay}
-            >
+            <div className={classes.overlay}>
+              <div
+                onClick={() => setActivePanel(index)}
+                className={classes.backdrop}
+              />
               {children}
             </div>
           )}
-        > */}
-          {/* <Dialog
-            open={showDeleteConfirmation}
-            onClose={() => closeConfirmationBox()}
-          >
-            <DialogTitle>Delete record</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                If you delete this record it will be gone forever. There is no
-                undo.
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button
-                autoFocus
-                onClick={() => closeConfirmationBox()}
-                color="default"
-              >
-                Cancel
-              </Button>
-              <Button onClick={() => closeConfirmationBox()} color="danger">
-                Delete
-              </Button>
-            </DialogActions>
-          </Dialog> */}
-
+        >
           {children.length ? children : <span>Form panel</span>}
-        {/* </ConditionalWrapper> */}
+        </ConditionalWrapper>
       </div>
     );
   })(),
@@ -82,9 +52,17 @@
     },
     overlay: {
       height: '100%',
-      opacity: 0.1,
+      position: 'relative',
+    },
+    backdrop: {
       zIndex: 1,
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
       opacity: 0.6,
+      backgroundColor: 'white',
     },
   }),
 }))();
